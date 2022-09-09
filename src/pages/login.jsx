@@ -56,7 +56,7 @@ function LoginPage() {
 
 export default LoginPage;
 
-const title1 = styeld.div`
+const title1 = styled.div`
   font-size: 20px;
   line-height: 1.5;
   margin-bottom: 15px;
