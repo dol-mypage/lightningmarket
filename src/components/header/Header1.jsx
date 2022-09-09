@@ -1,13 +1,14 @@
 import React from "react";
 import "./style.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Login from "../../pages/Login";
 
 //이미지 불러오기
 import 앱다운 from "../../img/앱다운.png";
 import 즐겨찾기 from "../../img/즐겨찾기.png";
 
 const Header1 = () => {
-  //   let navigate = useNavigate();
+  let navigate = useNavigate();
 
   return (
     <div className="IvAsaii">
@@ -28,7 +29,9 @@ const Header1 = () => {
           </button>
         </div>
         <div className="jYMzIJ">
-          <button className="bNBtQ">로그인/회원가입</button>
+          <button className="bNBtQ" onClick={() => navigate("/login")}>
+            로그인/회원가입
+          </button>
         </div>
         <div className=""></div>
       </div>
