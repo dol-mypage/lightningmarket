@@ -1,4 +1,3 @@
-
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -33,6 +32,7 @@ const Form = () => {
     console.log(res)
     return res.data;
   } 
+
 
   return (
     <div>
@@ -76,8 +76,7 @@ const Form = () => {
                 <div>
                     <label>가격
                         <input
-                            type='number'
-                            name='price'
+                            type='text'
                             value={price}
                             onChange={(event) => onChangeHandler(event, setPrice)}
                             placeholder='숫자만 입력해주세요'

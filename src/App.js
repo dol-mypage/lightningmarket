@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AddForm from "./pages/AddForm";
 import DetailPage from "./pages/DetailPage";
 
+
 function App() {
   return (
     <>
