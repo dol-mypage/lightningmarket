@@ -63,6 +63,7 @@ export default LoginPage;
 
 const Form = styled.div`
   width: 450px;
+  border: 1px solid #ff4b2b;
   background-color: #ffffff;
   display: flex;
   align-items: center;
