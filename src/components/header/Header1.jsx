@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Login from "../../pages/Login";
 
 //이미지 불러오기
-import 앱다운 from "../../img/앱다운.png";
-import 즐겨찾기 from "../../img/즐겨찾기.png";
+
 
 
 const Header1 = () => {

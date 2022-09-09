@@ -114,7 +114,7 @@ const Form = () => {
           <button onClick={onAddPost}>등록하기</button>
         </div>
       </div>
-    </div>
+    
   );
 };
 
