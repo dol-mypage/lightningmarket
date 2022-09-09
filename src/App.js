@@ -1,3 +1,4 @@
+
 import Header1 from "./components/header/Header1";
 import "../src/style.css";
 import { Route, Routes} from "react-router-dom";
@@ -5,9 +6,11 @@ import AddForm from "./pages/AddForm";
 import DetailPage from "./pages/DetailPage";
 
 
+
 function App() {
   
   return (
+
 
       <>
         <Header1/>
@@ -16,6 +19,7 @@ function App() {
             <Route path="/products/:id" element={<DetailPage/>}/>
         </Routes>
      </>
+
 
   );
 }
