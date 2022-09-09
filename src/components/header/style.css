@@ -1,0 +1,53 @@
+/* Header1 css*/
+
+.IvAsD {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  height: 40px;
+  background: rgb(255, 255, 255);
+}
+
+.kaFNmQ {
+  width: 1024px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.jYMzIJ {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.hvNQEV {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 13px;
+  padding: 0px 15px;
+  position: relative;
+  line-height: 1.4;
+  text-decoration: none;
+  color: black;
+}
+
+.bNBtQ {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 13px;
+  padding: 0px 15px;
+  position: relative;
+  line-height: 1.4;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.jYMzIJ {
+  display: flex;
+  flex-shrink: 0;
+}
