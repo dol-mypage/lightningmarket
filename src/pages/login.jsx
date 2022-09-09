@@ -61,6 +61,7 @@ function LoginPage() {
 
 export default LoginPage;
 
+
 const Form = styled.div`
   width: 450px;
   background-color: #ffffff;
@@ -74,6 +75,7 @@ const Form = styled.div`
 `;
 
 const Title = styled.div`
+
   font-size: 20px;
   line-height: 1.5;
   margin-bottom: 15px;

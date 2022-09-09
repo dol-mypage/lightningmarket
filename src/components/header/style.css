@@ -1,6 +1,6 @@
 /* Header1 css*/
 
-.IvAsD {
+.all {
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
@@ -9,19 +9,19 @@
   background: rgb(255, 255, 255);
 }
 
-.kaFNmQ {
+.all1 {
   width: 1024px;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
 }
 
-.jYMzIJ {
+.all2 {
   display: flex;
   flex-shrink: 0;
 }
 
-.hvNQEV {
+.appdown {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -33,7 +33,7 @@
   color: black;
 }
 
-.bNBtQ {
+.butt {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -47,7 +47,22 @@
   outline: none;
 }
 
-.jYMzIJ {
+.login {
   display: flex;
   flex-shrink: 0;
+}
+
+/* header2 */
+.aall {
+  position: sticky;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 35px;
+  background: rgb(255, 255, 255);
+  z-index: 10;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  top: 0px;
+  left: 0px;
 }
