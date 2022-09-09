@@ -6,7 +6,6 @@ import AddForm from "./pages/AddForm";
 import DetailPage from "./pages/DetailPage";
 
 
-
 function App() {
   
   return (
