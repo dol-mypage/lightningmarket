@@ -71,11 +71,20 @@ const DetailPage = () => {
                         <span style={{color:"black"}}>☑전국</span>
                     </ListTitle>
                 </ul>
+                {/* {posts.filter((post) => {
+                    return post.nickname === nickname})
+                ?<Button>
+                    <Jimbut>❤찜 5</Jimbut>
+                    <Bunbut>삭제하기</Bunbut>
+                    <Buybut>수정하기</Buybut>
+                </Button>
+                :
                 <Button>
                     <Jimbut>❤찜 5</Jimbut>
                     <Bunbut>번개톡</Bunbut>
                     <Buybut>바로구매</Buybut>
                 </Button>
+                } */}
             </div>
         </Cover>
         <BoxIcon>
@@ -153,7 +162,6 @@ const DetailPage = () => {
             </MyStore>
       </BoxDesc>
       </Box>
-      <h1 style={{fontSize:"150px",color:"white"}}>.</h1>
     </div>
   )
 }
@@ -206,7 +214,7 @@ const BoxIcon =styled.div`
     margin: 0 auto;
 `
 const Button = styled.div`
-    width: 520px;
+    width: 560px;
     height: 56px;
     display: flex;
     -webkit-box-pack: justify;

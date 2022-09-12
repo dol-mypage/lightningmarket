@@ -229,6 +229,8 @@ const Form = () => {
     <Btnarea>
       <button onClick={onAddPost}>등록하기</button>
     </Btnarea>
+    <Btnarea1>
+    </Btnarea1>
   </>
   );
 };
@@ -475,27 +477,6 @@ const ContBottom = styled.div`
         color: rgb(155, 153, 169);
     }
 `;
-const Btnarea = styled.div`
-    width: 100%;
-    height: 150px;
-    background: rgb(250, 250, 253);
-    box-shadow: rgb(234 233 241) 0px -1px 0px 0px;
-    padding: 20px 0px 20px;
-    box-sizing: border-box;
-    button {
-        display: absolute;
-        left: 68%;
-        border:none;
-        height: 60px;
-        width: 10rem;
-        color: rgb(255, 255, 255);
-        font-size: 20px;
-        font-weight: 700;
-        border-radius: 2px;
-        background: rgb(255, 80, 88);
-        position: relative;
-    }
-`
 const LiTag = styled.div`
   padding: 38px 0px;
   display: flex;
@@ -551,5 +532,32 @@ const DivCount = styled.div`
         margin: 0;
     }
   }
+`
+const Btnarea = styled.div`
+    position:sticky;
+    bottom:0px;
+    left:0px;
+    width: 100%;
+    height: 110px;
+    background: rgb(250, 250, 253);
+    box-shadow: rgb(234 233 241) 0px -1px 0px 0px;
+    padding: 25px 0px 20px;
+    box-sizing: border-box;
+    button {
+        display: absolute;
+        left: 68%;
+        border:none;
+        height: 60px;
+        width: 10rem;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        font-weight: 700;
+        border-radius: 2px;
+        background: rgb(255, 80, 88);
+        position: relative;
+    }
+`
+const Btnarea1 = styled.div`
+    position:relative;
 `
 export default Form;
