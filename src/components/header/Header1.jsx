@@ -7,7 +7,6 @@ import Login from "../../pages/Login";
 import 앱다운 from "../../img/앱다운.png";
 import 즐겨찾기 from "../../img/즐겨찾기.png";
 
-
 const Header1 = () => {
   let navigate = useNavigate();
 
@@ -36,7 +35,9 @@ const Header1 = () => {
           </button>
         </div>
         <div className="login">
-          <button className="butt" onClick={() => navigate("/login")}>로그인/회원가입</button>
+          <button className="butt" onClick={() => navigate("/login")}>
+            로그인/회원가입
+          </button>
           <button
             className="butt"
             onClick={() => {

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
-// import useDispatch from "react-redux";
-// import { login } from "../redux/modules/userSlice";
+// import { useDispatch } from "react-redux";
+// import { signUp } from "../redux/modules/userSlice";
 
-const Login = () => {
+function SignUp() {
   // const dispatch = useDispatch();
   let navigate = useNavigate();
   const [data, setData] = useState({ nickname: "", email: "", password: "" });
@@ -21,6 +21,16 @@ const Login = () => {
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
       <form>
+        <Inputbox>
+          <input
+            onChange={onChangeHandler}
+            placeholder="닉네임을 입력해주세요"
+            type="nickname"
+            name="nickname"
+            value={data.nickname}
+            required
+          />
+        </Inputbox>
         <Inputbox>
           <input
             onChange={onChangeHandler}
@@ -41,24 +51,35 @@ const Login = () => {
             required
           />
         </Inputbox>
+        <Inputbox>
+          <input
+            onChange={onChangeHandler}
+            placeholder="비밀번호 재입력"
+            type="password"
+            name="password"
+            value={data.password}
+            required
+          />
+        </Inputbox>
 
         <Buttonstyle>
           <button
             type="submit"
             className="signupstyle"
-            onClick={() => {
-              navigate("/signup");
-            }}
+            // onClick={() => {
+            //   dispatch(signUp(data));
+            // }}
           >
-            회원가입
+            <p>회원가입</p>
           </button>
         </Buttonstyle>
         <Buttonstyle>
           <button
             type="submit"
             className="loginstyle"
-
-            // onClick={()=>(dispatch(login(data)))}
+            onClick={() => {
+              navigate("/login");
+            }}
           >
             로그인
           </button>
@@ -72,9 +93,9 @@ const Login = () => {
       </form>
     </Wrapper>
   );
-};
+}
 
-export default Login;
+export default SignUp;
 
 let Wrapper = styled.div`
   font-family: "Noto Sans KR", sans-serif;
@@ -99,10 +120,10 @@ const Buttonstyle = styled.button`
   height: 30px;
 
   .loginstyle {
-    background-color: #d80c18;
-    color: white;
     background: none;
     border: 1px solid;
+    border-color: gray;
+    background-color: none;
     height: 30px;
     align-content: center;
     align-items: center;
@@ -113,10 +134,9 @@ const Buttonstyle = styled.button`
   }
 
   .signupstyle {
-    background: none;
-    border: 1px solid;
-    border-color: gray;
-    background-color: none;
+    background-color: #d80c18;
+    border-style: none;
+    color: white;
     height: 30px;
     align-content: center;
     align-items: center;

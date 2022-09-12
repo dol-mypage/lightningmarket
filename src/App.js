@@ -4,8 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AddForm from "./pages/AddForm";
 import DetailPage from "./pages/DetailPage";
 import Login from "./pages/Login";
-
-
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -13,6 +12,7 @@ function App() {
       <Header1 />
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/products/new" element={<AddForm />} />
         <Route path="/products/:id" element={<DetailPage />} />
       </Routes>
