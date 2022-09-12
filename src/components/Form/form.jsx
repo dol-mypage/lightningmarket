@@ -5,6 +5,7 @@ import { useState } from 'react'
 import './style.css'
 
 
+
 const Form = () => {
   const [title, setTitle] = useState("");
   const [imgUrl, setImgUrl] = useState("");
@@ -62,7 +63,6 @@ const Form = () => {
   };
 
   return (
-
   <>
     <Box>
       <Cover>
