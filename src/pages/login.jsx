@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
-import 앱다운 from "../img/앱다운.png";
+// import 앱다운 from "../img/" />;
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ function LoginPage() {
 
   return (
     <div>
-      <img src={앱다운}></img>
+      {/* <img src={앱다운}></img> */}
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
       <Form>
