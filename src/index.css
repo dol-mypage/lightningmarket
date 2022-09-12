@@ -12,10 +12,12 @@ code {
     monospace;
 }
 
-p,
-h1,
-h2,
-h3,
-h4 {
+
+p,h1,h2,h3,h4,li {
   margin: 0;
 }
+
+ul{
+  padding-left: 20px;
+}
+
