@@ -40,7 +40,7 @@ const Header1 = () => {
           </Butt>
           <Butt
             onClick={() => {
-              navigate("/myShop");
+              navigate("/myshop");
             }}
           >
             내상점
@@ -61,7 +61,6 @@ const All = styled.div`
   height: 40px;
   background: rgb(255, 255, 255);
   a {
-    font-family: "Noto Sans KR", sans-serif;
     font-size: 12px;
     color: #666666;
   }
@@ -81,7 +80,6 @@ const AllSt = styled.div`
 
 const AppDown = styled.div`
   display: flex;
-  // align-items: center;
   font-size: 13px;
   padding: 0px 15px;
   line-height: 1.4;
@@ -110,7 +108,6 @@ const Butt = styled.div`
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  font-family: "Noto Sans KR", sans-serif;
   font-size: 12px;
   color: #525252;
 `;
