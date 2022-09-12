@@ -8,6 +8,8 @@ import AddForm from "./pages/AddForm";
 import DetailPage from "./pages/DetailPage";
 import MyShop from "./pages/MyShop";
 import { Route, Routes } from "react-router-dom";
+import Update from "./pages/Update"
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="/myshop" element={<MyShop />} />
         <Route path="/products/new" element={<AddForm />} />
         <Route path="/products/:id" element={<DetailPage />} />
+        <Route path="/products/update/:id" element={<Update/>}/>
       </Routes>
       <Footer />
     </>
