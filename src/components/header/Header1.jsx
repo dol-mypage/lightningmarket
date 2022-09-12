@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import { useNavigate } from "react-router-dom";
 import Login from "../../pages/Login";
 
