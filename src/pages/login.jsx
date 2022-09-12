@@ -4,6 +4,8 @@ import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
 // import useDispatch from "react-redux";
 // import { login } from "../redux/modules/userSlice";
+// import 앱다운 from "../img/" />;
+
 
 const Login = () => {
   // const dispatch = useDispatch();
@@ -98,6 +100,7 @@ const Buttonstyle = styled.button`
   padding: 0px;
   height: 30px;
 
+
   .loginstyle {
     background-color: #d80c18;
     color: white;
@@ -134,6 +137,7 @@ const Inputbox = styled.div`
   justify-content: center;
   margin: 10px auto;
 `;
+
 
 const App = styled.img`
   text-align: center;
