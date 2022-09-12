@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import './style.css'
 
+
+
 const Form = () => {
   const [title, setTitle] = useState("");
   const [imgUrl, setImgUrl] = useState("");
@@ -59,7 +61,6 @@ const Form = () => {
     console.log(res);
     return res.data;
   };
-
 
   return (
   <>
