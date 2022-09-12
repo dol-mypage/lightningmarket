@@ -17,6 +17,7 @@ function LoginPage() {
 
   return (
     <div>
+
       {/* <img src={앱다운}></img> */}
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
@@ -61,7 +62,6 @@ function LoginPage() {
 
 export default LoginPage;
 
-
 const Form = styled.div`
   width: 450px;
   background-color: #ffffff;
@@ -75,7 +75,6 @@ const Form = styled.div`
 `;
 
 const Title = styled.div`
-
   font-size: 20px;
   line-height: 1.5;
   margin-bottom: 15px;
