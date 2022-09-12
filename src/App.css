@@ -27,7 +27,42 @@
 .App-link {
   color: #61dafb;
 }
-
+.naver{
+  position: relative;
+  width: 27px;
+  height: 27px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin-right: 10px;
+  background: rgb(0, 203, 47);
+}
+.facebook{
+  position: relative;
+    width: 27px;
+    height: 27px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-right: 10px;
+    background: rgb(59, 89, 152);
+}
+.twitter{
+  position: relative;
+    width: 27px;
+    height: 27px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-right: 10px;
+    background: rgb(85, 172, 238);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
