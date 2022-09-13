@@ -19,8 +19,8 @@ export const __getProduct = createAsyncThunk(
         //   RefreshToken: localStorage.getItem("RefreshToken"),
         // },
       });
-      console.log(data);
-      return thunkAPI.fulfillWithValue(data.data);
+      console.log(data.data.data);
+      return thunkAPI.fulfillWithValue(data.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -39,6 +39,7 @@ export const productSlice = createSlice({
     [__getProduct.fulfilled]: (state, action) => {
       state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경
       state.data = action.payload; // Store에 있는 data에 서버에서 가져온 data를 넣음
+      console.log(state.data)
     },
     [__getProduct.rejected]: (state, action) => {
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경
