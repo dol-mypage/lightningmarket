@@ -9,7 +9,8 @@ import { __getProduct } from "../redux/modules/products";
 function Main() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.product.data);
+  console.log(products)
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
@@ -27,7 +28,7 @@ function Main() {
           <ItemContainer>
             <Card>
               <div>
-                {products?.data?.data?.map((product) => {
+                {products.map((product) => {
                   return (
                     <div
                       onClick={() => {

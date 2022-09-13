@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import blog from '../img/blog.png'
 import '../App.css'
+import { useParams } from 'react-router-dom';
 
 const DetailPage = () => {
 
@@ -23,7 +24,7 @@ const DetailPage = () => {
 
     //     return String(post.id) === id;
     // });
-
+    const {id} =useParams();
   return (
     <div>
       <Box>
