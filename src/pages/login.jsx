@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
 import x버튼 from "../img/x버튼.png";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/modules/userSlice";
+// import { useDispatch } from "react-redux";
+// import { login } from "../redux/modules/userSlice";
 import axios from "axios";
 
 const Login = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   let navigate = useNavigate();
   const [inputvalue, setInputvalue] = useState({
     nickname: "",
