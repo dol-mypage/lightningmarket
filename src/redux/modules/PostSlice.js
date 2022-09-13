@@ -4,12 +4,29 @@ import axios from "axios";
 
 const initialState = {
     post: [],
+    detail:{},
     isLoading: false,
     error: null,
 }
+export const _getDetails = createAsyncThunk(
+    "PostSlice/getDetails",
+    async (payload,thunkAPI) => {
+      try {
+        const data = await axios.get(`http://13.125.225.96:8080/products${payload}`,{
+            headers:{
+
+            }
+        });
+        console.log(data);
+        return thunkAPI.fulfillWithValue(data.data.data);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
+    }
+  );
 
 export const _deletePost = createAsyncThunk(
-    "post/delete",
+    "PostSlice/delete",
     async (payload, thunkAPI) => {
         try{
             const data = await axios.delete(
@@ -25,7 +42,7 @@ export const _deletePost = createAsyncThunk(
     }
 )
 export const _updatePost = createAsyncThunk(
-    "post/update",
+    "PostSlice/update",
     async (payload,thunkAPI) => {
         try{
             const data = await axios.put(
@@ -47,7 +64,19 @@ export const postSlice = createSlice({
     name:"post",
     initialState,
     reducers:{},
-    extraReducers:(builder) => {
+extraReducers:(builder) => {
+        builder
+            .addCase(_getDetails.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(_getDetails.fulfilled, (state,action) => {
+                state.isLoading = false;
+                state.data = action.payload;
+            })
+            .addCase(_getDetails.rejected, (state,action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
         // builder
         //     .addCase(_deletePost.pending, (state) => {
         //         state.isLoading = true;
@@ -57,7 +86,7 @@ export const postSlice = createSlice({
         //         const deleteState = state.post.findIndex(post => post.id === action.payload)
         //         state.post.slice(deleteState,1)
         //     })
-        //     .addCase(_deletePost.pending, (state,action) => {
+        //     .addCase(_deletePost.rejected, (state,action) => {
         //         state.isLoading = true;
         //         state.error = action.payload;
         //     })
@@ -69,7 +98,7 @@ export const postSlice = createSlice({
         //         state.isLoading = true;
         //         state.post = action.payload;
         //     })
-        //     .addCase(_updatePost.pending, (state,action) => {
+        //     .addCase(_updatePost.rejected, (state,action) => {
         //         state.isLoading = true;
         //         state.error = action.payload;
         //     })

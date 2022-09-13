@@ -550,7 +550,6 @@ const Btnarea = styled.div`
     box-sizing: border-box;
     button {
         display: absolute;
-        left: 68%;
         border:none;
         height: 60px;
         width: 10rem;
@@ -559,7 +558,7 @@ const Btnarea = styled.div`
         font-weight: 700;
         border-radius: 2px;
         background: rgb(255, 80, 88);
-        position: relative;
+        margin-left:1300px;
     }
 `
 const Btnarea1 = styled.div`

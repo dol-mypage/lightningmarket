@@ -8,23 +8,28 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import blog from '../img/blog.png'
+import { useEffect } from 'react';
 import '../App.css'
 import { useParams } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { _getDetails } from '../redux/modules/PostSlice';
 
 const DetailPage = () => {
+    const dispatch=useDispatch();
+    // const posts = useSelector((state) => state.product)
+    // console.log(useSelector((state)=>state))
 
-    // const posts = useSelector((state) => state?.postSlice?.post)
-
-
-    // useEffect(() => {
-    //     setTimeout(() =>{dispatch(_getPost());},1000)
-    // }, [dispatch]);
-    // //   새로고침시 화면 안뜸
+    useEffect(() => {
+        setTimeout(() =>{dispatch(_getDetails(id));},1000)
+    }, [dispatch]);
+    //   새로고침시 화면 안뜸
     // let postt = posts?.find((post) => {
 
     //     return String(post.id) === id;
     // });
     const {id} =useParams();
+    console.log(id)
+
   return (
     <div>
       <Box>
