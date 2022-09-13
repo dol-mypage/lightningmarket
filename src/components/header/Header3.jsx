@@ -13,7 +13,7 @@ const Header3 = () => {
               width="9"
               height="9"
               alt="찜 아이콘"
-            />{" "}
+            />
             0
           </Like1>
         </BoxLike>
@@ -56,13 +56,7 @@ const All = styled.div`
   top: 120px;
   right: 330px;
   width: 90px;
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-  font: inherit;
   display: block;
-  font-synthesis: none;
-  text-align: left;
   color: rgb(33, 33, 33);
   letter-spacing: -0.5px;
   box-sizing: border-box;
