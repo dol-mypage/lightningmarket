@@ -167,6 +167,7 @@ const DetailPage = () => {
 }
 const Box = styled.div`
     width:100%;
+    padding-bottom:50px;
     
 `
 const Cover = styled.div`
@@ -212,6 +213,7 @@ const BoxIcon =styled.div`
     align-items: center;
     width:1100px;
     margin: 0 auto;
+    padding-right:40px;
 `
 const Button = styled.div`
     width: 560px;
