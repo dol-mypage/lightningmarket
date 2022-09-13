@@ -2,43 +2,76 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
-// import useDispatch from "react-redux";
-// import { login } from "../redux/modules/userSlice";
+import x버튼 from "../img/x버튼.png";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/modules/userSlice";
+import axios from "axios";
 
 const Login = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   let navigate = useNavigate();
-  const [data, setData] = useState({ nickname: "", email: "", password: "" });
+  const [inputvalue, setInputvalue] = useState({
+    nickname: "",
+    password: "",
+  });
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+    setInputvalue({ ...inputvalue, [name]: value });
+  };
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    //빈값 체크
+    if (inputvalue.nickname === "" || inputvalue.password === "") {
+      window.alert("아이디와 비밀번호를 입력해주세요.");
+    }
+
+    try {
+      const data = await axios.post(
+        "http://13.125.225.96:8080/login",
+        inputvalue
+      );
+      localStorage.setItem("Authorization", data.headers.authorization); //accesstoken
+      localStorage.setItem("RefreshToken", data.headers.refreshtoken); //refreshtoken
+      localStorage.setItem("nickname", data.data.data.nickname);
+      console.log(data);
+      navigate("/");
+    } catch (error) {
+      alert("아이디와 비밀번호를 다시 확인해주세요.");
+    }
+    console.log(inputvalue);
   };
 
   return (
     <Wrapper>
+      <XWrap>
+        <X src={x버튼}></X>
+      </XWrap>
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <Inputbox>
           <input
+            className="inputstyle"
             onChange={onChangeHandler}
-            placeholder="이메일을 입력해주세요"
-            type="email"
-            name="email"
-            value={data.email}
-            required
+            placeholder="아이디를 입력해주세요"
+            type="id"
+            name="nickname"
+            value={inputvalue.nickname}
+            // required
           />
         </Inputbox>
         <Inputbox>
           <input
+            className="inputstyle"
             onChange={onChangeHandler}
-            placeholder="비밀번호(영문,숫자,특수문자포함 6글자 이상)"
+            placeholder="비밀번호(소문자 혹은 숫자 포함하여  8글자 이상)"
             type="password"
             name="password"
-            value={data.password}
-            required
+            value={inputvalue.password}
+            // required
           />
         </Inputbox>
 
@@ -57,8 +90,10 @@ const Login = () => {
           <button
             type="submit"
             className="loginstyle"
-
-            // onClick={()=>(dispatch(login(data)))}
+            // onClick={(e) => {
+            //   dispatch(login(data));
+            //   console.log("실행되나");
+            // }}
           >
             로그인
           </button>
@@ -87,7 +122,18 @@ let Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding-top: 40px;
+  /* border: 1px solid red; */
+  display: flex;
+`;
+
+const X = styled.img`
+  width: 20px;
+`;
+
+const XWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: right;
 `;
 
 const Buttonstyle = styled.button`
@@ -101,7 +147,6 @@ const Buttonstyle = styled.button`
   .loginstyle {
     background-color: #d80c18;
     color: white;
-    background: none;
     border: 1px solid;
     height: 30px;
     align-content: center;
@@ -110,6 +155,7 @@ const Buttonstyle = styled.button`
     display: flex;
     border-radius: 5px;
     width: 100px;
+    cursor: pointer;
   }
 
   .signupstyle {
@@ -124,6 +170,7 @@ const Buttonstyle = styled.button`
     display: flex;
     border-radius: 5px;
     width: 100px;
+    cursor: pointer;
   }
 `;
 
@@ -133,6 +180,12 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+
+  .inputstyle {
+    width: 250px;
+    height: 25px;
+    font-family: "Noto Sans KR", sans-serif;
+  }
 `;
 
 const App = styled.img`
