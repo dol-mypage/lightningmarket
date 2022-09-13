@@ -69,15 +69,19 @@ const Update = () => {
     setFileImage(fileImage.filter((_,index) => index !== id))
   }
 
+  const data = {
+    title:title,
+    content:content,
+    price:price
+  }
+  console.log(data)
   //value를 setState해준다
   const onChangeHandler = (event, setState) => setState(event.target.value);
 
   const onUpdatePost = async () => {
     const formData = new FormData();
-    formData.append("title", title);
+    formData.append("data", data);
     formData.append("imgUrl", fileImage);
-    formData.append("price", price);
-    formData.append("content", content);
     
     const payload = {
       id:id,
