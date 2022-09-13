@@ -10,27 +10,25 @@ const MyProfile = () => {
     <>
       <All>
         <All1>
-          <Imggg>
-            <ImgG>
-              <img src={Photo} />
-            </ImgG>
-            <ImgG1>
-              <ImgG11>
-                <img
-                  src={Photo}
-                  width="100"
-                  height="100"
-                  alt="상점 프로필 이미지"
-                  class="sc-fATqzn hyPlln"
-                />
-              </ImgG11>
-              <ImgBtt>닉네임</ImgBtt>
-              <img src={별이다섯개} />
-              <ImgBtt1>
-                <button>내상점 관리</button>
-              </ImgBtt1>
-            </ImgG1>
-          </Imggg>
+          <ImgG>
+            <img src={Photo} />
+          </ImgG>
+          <ImgG1>
+            <ImgG11>
+              <img
+                src={Photo}
+                width="100"
+                height="100"
+                alt="상점 프로필 이미지"
+                class="sc-fATqzn hyPlln"
+              />
+            </ImgG11>
+            <ImgBtt>닉네임</ImgBtt>
+            <img src={별이다섯개} />
+            <ImgBtt1>
+              <button>내상점 관리</button>
+            </ImgBtt1>
+          </ImgG1>
         </All1>
         <TextWindow>
           <Nickname>
@@ -43,14 +41,19 @@ const MyProfile = () => {
         </TextWindow>
       </All>
       <img src={tabs} />
-      <TextInput>
-        상품
-        <Select>
-          <option value="HTML">HTML</option>
-          <option value="자바스크립트">자바스크립트</option>
-          <option value="CSS">CSS</option>
-        </Select>
-      </TextInput>
+      <Imggg>
+        <Texttt>상품</Texttt>
+        <select>
+          <option>전체ㅤㅤㅤㅤㅤㅤㅤ</option>
+        </select>
+      </Imggg>
+      <AllVi>
+        <Text1>전체</Text1>
+        <p style={{ color: "red" }}>최신순</p>
+        <p style={{ borderLeft: "1px solid rgb(167, 167, 167)" }}>인기순</p>
+        <p style={{ borderLeft: "1px solid rgb(167, 167, 167)" }}>저가순</p>
+        <p style={{ borderLeft: "1px solid rgb(167, 167, 167)" }}>고가순</p>
+      </AllVi>
     </>
   );
 };
@@ -66,8 +69,6 @@ const All = styled.div`
   border: 1px solid rgb(238, 238, 238);
   height: 310px;
 `;
-
-const Imggg = styled.div``;
 
 const All1 = styled.div``;
 
@@ -151,6 +152,30 @@ const NicknameBtt = styled.button`
   margin-left: 7px;
 `;
 
-const TextInput = styled.button``;
+const Texttt = styled.div`
+  font-size: 18px;
+  float: left;
+  padding-right: 843px;
+  font-weight: bold;
+`;
 
-const Select = styled.button``;
+const Imggg = styled.div`
+  padding: 50px 0px 20px;
+  border-bottom: 1px solid rgb(238, 238, 238);
+`;
+
+const AllVi = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  p {
+    font-size: 13px;
+    padding: 0 10px 0 10px;
+  }
+  padding: 30px 0 30px 0;
+`;
+
+const Text1 = styled.div`
+  float: left;
+  padding-right: 750px;
+`;

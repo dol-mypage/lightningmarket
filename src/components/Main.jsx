@@ -24,7 +24,7 @@ function Main() {
         <H2>오늘의 상품 추천</H2>
         <ItemInfos>
           <ItemContainer>
-            <div>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
               {products.map((product) => {
                 return (
                   <div
@@ -33,21 +33,19 @@ function Main() {
                     }}
                     key={product.id}
                   >
-                    <Card>
-                      <CardInner>
-                        <CardHead>
-                          <img src={product.imgUrl} />
-                          <Sth />
-                          <CardContents>
-                            <ItemName>{product.title}</ItemName>
-                            <ItemContentBottom>
-                              <Price>{product.price}</Price>
-                              <Time>2시간 전</Time>
-                            </ItemContentBottom>
-                          </CardContents>
-                        </CardHead>
-                      </CardInner>
-                    </Card>
+                    <CardInner>
+                      <CardHead>
+                        <img src={product.imgUrl} />
+                        <Sth />
+                      </CardHead>
+                      <CardContents>
+                        <ItemName>{product.title}</ItemName>
+                        <ItemContentBottom>
+                          <Price>{product.price}</Price>
+                          <Time>2시간 전</Time>
+                        </ItemContentBottom>
+                      </CardContents>
+                    </CardInner>
                   </div>
                 );
               })}
@@ -73,37 +71,28 @@ const ItemInfos = styled.div`
   overflow: hidden;
 `;
 const ItemContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-// 카드
-const Card = styled.div`
-  width: 196px;
-  margin-right: 11px;
-  margin-bottom: 11px;
-  &:nth-child(5n) {
-    margin-right: 0;
-  }
+  width: 1024px;
 `;
 
 const CardInner = styled.a`
   border: 1px solid rgb(238, 238, 238);
   background: rgb(255, 255, 255);
   display: block;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 
 const CardHead = styled.div`
   position: relative;
-  width: 100%;
+  width: 192px;
   height: 194px;
   img {
     vertical-align: bottom;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
-    height: 100%;
+    width: 192px;
+    height: 194px;
   }
 `;
 
