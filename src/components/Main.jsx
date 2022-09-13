@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Banner from "./Banner";
 
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +9,7 @@ function Main() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
-  console.log(products)
+  console.log(products);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
@@ -21,21 +20,20 @@ function Main() {
 
   return (
     <>
-      <Banner />
       <Section>
         <H2>오늘의 상품 추천</H2>
         <ItemInfos>
           <ItemContainer>
-            <Card>
-              <div>
-                {products.map((product) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        navigate(`/products/${product.id}`);
-                      }}
-                      key={product.id}
-                    >
+            <div>
+              {products.map((product) => {
+                return (
+                  <div
+                    onClick={() => {
+                      navigate(`/products/${product.id}`);
+                    }}
+                    key={product.id}
+                  >
+                    <Card>
                       <CardInner>
                         <CardHead>
                           <img src={product.imgUrl} />
@@ -49,11 +47,11 @@ function Main() {
                           </CardContents>
                         </CardHead>
                       </CardInner>
-                    </div>
-                  );
-                })}
-              </div>
-            </Card>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
           </ItemContainer>
         </ItemInfos>
       </Section>
