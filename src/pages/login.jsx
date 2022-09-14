@@ -201,7 +201,6 @@ const Inputbox = styled.div`
   }
 `;
 
-
 const App = styled.img`
   text-align: center;
   margin: auto auto 10px;

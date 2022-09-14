@@ -8,40 +8,23 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import blog from '../img/blog.png'
-import { useEffect } from 'react';
 import '../App.css'
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
-import { _getDetails,_deletePost,onLikePost } from '../redux/modules/PostSlice';
+import { useParams } from 'react-router-dom';
 
 const DetailPage = () => {
-    const {id} = useParams();
-    let nickname = localStorage.getItem("nickname");
-    console.log(nickname)
-    const navigate =useNavigate();
-   
-    const dispatch=useDispatch();
-    const {isLoading, error,detail} = useSelector((state) => state?.postSlice)
-    // console.log(useSelector((state) => state))
-  
-    useEffect(() => {
-      dispatch(_getDetails(id));
-    }, []);
-  
-    if (isLoading) {
-      return <div>로딩중....</div>;
-    }
-  
-    if(error) {
-      return <div>{error.message}</div>;
-    }
 
-    
-    const onLike = async (event) => {
-        event.preventDefault();
-        dispatch(onLikePost(id));
-      };
+    // const posts = useSelector((state) => state?.postSlice?.post)
 
+
+    // useEffect(() => {
+    //     setTimeout(() =>{dispatch(_getPost());},1000)
+    // }, [dispatch]);
+    // //   새로고침시 화면 안뜸
+    // let postt = posts?.find((post) => {
+
+    //     return String(post.id) === id;
+    // });
+    const {id} =useParams();
   return (
     <div>
       <Box>
@@ -56,19 +39,17 @@ const DetailPage = () => {
                 navigation
                 pagination={{ clickable: true }}
                 >
-                <SwiperSlide><Img alt='' src={detail.imgUrl}/></SwiperSlide>
-                {/* <SwiperSlide><Img alt='' src={data.imgUrl}/></SwiperSlide> */}
-                {/* {data.immap((data) => (
-                  <div key={data.id}>
-                      <SwiperSlide><Img alt='' src={data.image}/></SwiperSlide>
+                {/* {fileImage.map((image,id) => (
+                  <div key={id}>
+                      <SwiperSlide><Img alt={`${image}-${id}`} src={image}/></SwiperSlide>
                   </div>
                   ))} */}
             </Swiper>
             </ImgCover>  
             <div style={{width:"100%",paddingRight:"20px"}}>
                 <div style={{borderBottom:"1px solid green",}}>
-                    <h2>{detail.title}</h2>
-                    <p style={{fontSize:"45px",margin:"25px 0px 25px 0px"}}>{detail.price}
+                    <h2>피파 추석 집 버닝 싸게 해드립니다 하루5000원</h2>
+                    <p style={{fontSize:"45px",margin:"25px 0px 25px 0px"}}>16,000 
                     <span style={{fontSize:"30px", marginRight:"10px"}}>원</span>
                     <img alt='' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDYwIDI4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNzU2LjAwMDAwMCwgLTI2OS4wMDAwMDApIHRyYW5zbGF0ZSgyNzU2LjAwMDAwMCwgMjY5LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjI3LjQyOSIgZmlsbD0iI0Q4MEMxOCIgcng9IjIiLz4KICAgICAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0xNS44MTcgNS4xNDdsLS45NiA3LjgyNGgzLjk4NWMuMDc0IDAgLjExMy4wODguMDYyLjE0MkwxMC4yOSAyMi4zNWMtLjA1Ni4wNi0uMTU2LjAxMy0uMTQ2LS4wNjhsLjk2LTcuODI0SDcuMTJjLS4wNzUgMC0uMTEzLS4wODktLjA2Mi0uMTQzTDE1LjY3IDUuMDhjLjA1Ni0uMDYuMTU2LS4wMTMuMTQ2LjA2OHpNMzYuMDUgNi4zNnYxNC43MjZoLTIuMjRWNi4zNTloMi4yNHptMTQuNDgxIDB2MTQuNzI2aC0yLjMwNlY2LjM1OWgyLjMwNnptLTE3LjU5OC4wODF2MTQuMzY2aC0yLjIwOHYtNi44NTVoLTEuMzN2LTIuMTY1aDEuMzNWNi40NGgyLjIwOHptOS4yNTMtLjAzM2MuNjA2IDAgMS4xNjEuMDg1IDEuNjY1LjI1NS41MDIuMTY5LjkzOC40MjggMS4zMDYuNzc5LjM2OC4zNS42Ni43ODYuODc3IDEuMzEyLjIxNi41MjQuMzQgMS4xMzcuMzczIDEuODM2LjAyMi40Ny4wMzguOTIxLjA0OSAxLjM1NC4wMS40My4wMTYuODU4LjAxNiAxLjI3OCAwIC40MjItLjAwNS44NDUtLjAxNiAxLjI3LS4wMTEuNDI4LS4wMjcuODctLjA0OSAxLjMzLS4wMzIuNzEtLjE1NyAxLjMyNS0uMzczIDEuODQ0LS4yMTcuNTItLjUwOS45NTUtLjg3NyAxLjMwNC0uMzY4LjM1LS44MDQuNjEtMS4zMDYuNzgtLjUwNC4xNy0xLjA1OS4yNTQtMS42NjUuMjU0LTEuMjIzIDAtMi4yMTMtLjM0NS0yLjk3LTEuMDM0LS43NTgtLjY4OC0xLjE3NS0xLjczOC0xLjI1LTMuMTQ4LS4wMjItLjQ3LS4wNDEtLjkxOC0uMDU3LTEuMzQ1LS4wMTctLjQyNi0uMDI1LS44NS0uMDI1LTEuMjcgMC0uNDIxLjAwOC0uODQ2LjAyNS0xLjI3My4wMTYtLjQyNS4wMzUtLjg3NC4wNTctMS4zNDQuMDc1LTEuNDEuNDkyLTIuNDYgMS4yNS0zLjE0OC43NTctLjY5IDEuNzQ3LTEuMDM0IDIuOTctMS4wMzR6bS0xMi4xNDMuMzEydjIuMDM0aC0uOTFsLS4wMjkgOC43IDEuMDUzLS4wNDF2MmwtNy42NjIuMzI5di0yLjAzNGwxLjA3LS4wNDEtLjAzLTguOTEzaC0uOTFWNi43MTloNy40MTh6TTQyLjE4NiA4LjQ0Yy0uMjgxIDAtLjUzMy4wNDYtLjc1NS4xNC0uMjIxLjA5Mi0uNDE0LjI0NS0uNTc2LjQ1OS0uMTYyLjIxMi0uMjkyLjQ5NC0uMzkuODQzLS4wOTcuMzUxLS4xNjIuNzg4LS4xOTQgMS4zMTQtLjA0My42NDQtLjA2NSAxLjMxNC0uMDY1IDIuMDA4cy4wMjIgMS4zNjQuMDY1IDIuMDA5Yy4wMzIuNTI0LjA5Ny45NjIuMTk0IDEuMzEyLjA5OC4zNS4yMjguNjMxLjM5Ljg0NS4xNjIuMjEzLjM1NS4zNjUuNTc2LjQ1OS4yMjIuMDkzLjQ3NC4xMzkuNzU1LjEzOXMuNTMzLS4wNDYuNzU1LS4xNGMuMjIyLS4wOTMuNDE0LS4yNDUuNTc3LS40NTguMTYyLS4yMTQuMjkyLS40OTYuMzktLjg0NS4wOTYtLjM1LjE2MS0uNzg4LjE5NC0xLjMxMi4wNDMtLjY0NS4wNjUtMS4zMTIuMDY1LTIgMC0uNjktLjAyMi0xLjM2Mi0uMDY1LTIuMDE3LS4wMzMtLjUyNi0uMDk4LS45NjMtLjE5NC0xLjMxNC0uMDk4LS4zNS0uMjI4LS42MzEtLjM5LS44NDMtLjE2My0uMjE0LS4zNTUtLjM2Ny0uNTc3LS40Ni0uMjIyLS4wOTMtLjQ3NC0uMTQtLjc1NS0uMTR6bS0xNS4yNDUuMzEyaC0xLjIxNGwuMDI5IDguODI4IDEuMTU3LS4wNDQuMDI4LTguNzg0eiIvPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K'/>
                     </p>
@@ -91,19 +72,20 @@ const DetailPage = () => {
                         <span style={{color:"black"}}>☑전국</span>
                     </ListTitle>
                 </ul>
-                {detail.nickname === nickname
+                {/* {posts.filter((post) => {
+                    return post.nickname === nickname})
                 ?<Button>
-                    <Jimbut onClick={onLike}>❤찜 {detail.likes}</Jimbut>
-                    <Bunbut onClick={() => dispatch(_deletePost(detail))}>삭제하기</Bunbut>
-                    <Buybut onClick={() => navigate('/products/update/'+detail.id)}>수정하기</Buybut>
+                    <Jimbut>❤찜 5</Jimbut>
+                    <Bunbut>삭제하기</Bunbut>
+                    <Buybut>수정하기</Buybut>
                 </Button>
                 :
                 <Button>
-                    <Jimbut onClick={onLike}>❤찜 {detail.likes}</Jimbut>
+                    <Jimbut>❤찜 5</Jimbut>
                     <Bunbut>번개톡</Bunbut>
                     <Buybut>바로구매</Buybut>
                 </Button>
-                }
+                } */}
             </div>
         </Cover>
         <BoxIcon>
@@ -121,7 +103,7 @@ const DetailPage = () => {
             <Desc>
                 <Goods>상품정보</Goods>
                 <Content>
-                    <p>{detail.content}</p>
+                    <p>집 버닝만 해드리고 하루에 5천원 받습니다</p>
                 </Content>
                 <Namma>
                     <Location>
@@ -202,10 +184,8 @@ const Cover = styled.div`
 const ImgCover = styled.div`
     margin-right: 40px;
     flex-shrink: 0;
-    width: 420px;
-    height: 420px;
-    min-width:420px;
-    min-height:420px;
+    width: 500px;
+    height: 500px;
     justify-content:flex-start;
     /* padding-right:200px; */
 `
@@ -242,7 +222,7 @@ const Button = styled.div`
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
-    margin-top:60px;
+    margin-top:30px;
 `
 const Jimbut = styled.button`
     font-weight: 600;

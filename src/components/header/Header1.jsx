@@ -7,6 +7,8 @@ const Header1 = (props) => {
   console.log(props);
   let navigate = useNavigate();
 
+  const user = localStorage.getItem("nickname");
+
   return (
     <All>
       <All1>
@@ -32,7 +34,10 @@ const Header1 = (props) => {
             즐겨찾기
           </Butt>
         </AllSt>
-        <LoGin>
+
+
+        {user == null ? (
+         <LoGin>
           <Butt onClick={open}>
             {/* 로그인/회원가입 버튼을 클릭했을 때 모달을 연다. */}
             로그인/회원가입
@@ -45,6 +50,25 @@ const Header1 = (props) => {
             내상점
           </Butt>
         </LoGin>
+        ) : (
+          <LoGin>
+            <Butt
+              onClick={() => {
+                navigate("/Login");
+              }}
+            >
+              로그아웃
+            </Butt>
+            <Butt>알림</Butt>
+            <Butt
+              onClick={() => {
+                navigate("/myshop");
+              }}
+            >
+              내상점
+            </Butt>
+          </LoGin>
+        )}
       </All1>
     </All>
   );

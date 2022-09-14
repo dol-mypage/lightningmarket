@@ -4,30 +4,39 @@ import styled from 'styled-components'
 import { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
-import { _updatePost,_getDetails } from '../redux/modules/PostSlice'
+import { _updatePost } from '../redux/modules/PostSlice'
 import './style.css'
 
 const Update = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
 
+
   const [title, setTitle] = useState("");
-  const [imgUrl, setImgUrl] = useState(""); 
+  const [imgUrl, setImgUrl] = useState("");
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
   const [fileImage, setFileImage] = useState([]);
   console.log(fileImage)
 
-  const dataList = useSelector((state) => state?.postSlice?.data)
-  console.log(dataList)
+  // const {isLoading, error, post} = useSelector((state) => state.postSlice)
+  // console.log(post)
 
-  useEffect(() => {
+  // useEffect(() => {
+  //     dispatch(_getPost());
+  //   }, [dispatch]);
 
-  })
-  useEffect(() => {
-      dispatch(_getDetails(id));
-    }, []);
+  //   if (isLoading) {
+  //     return <div>로딩중....</div>;
+  //   }
 
+  //   if(error) {
+  //     return <div>{error.message}</div>;
+  //   }
+
+  //   const list = post.find(post => {
+  //     return (post.id) === Number(id)
+  // });
   
   const checkOnlyOne = (checkThis) => {
     const checkboxes = document.getElementsByName('change')
@@ -48,22 +57,13 @@ const Update = () => {
   }
   
   const onChangeImg = (e) => {
-    const imageList = e.target.files
-    console.log(imageList)
-    let imgFiles = [...fileImage];
-    for (let i = 0; i < imageList.length; i++) {
-      const nowImageUrl = URL.createObjectURL(e.target.files[i]);
-      imgFiles.push(nowImageUrl);
-    }
-    // const imgList = [];
-    // for (let i = 0; i < setImgUrl.length; i++) {
-    //   const nowImageUrl1 = e.target.files[0];
-    //   console.log(nowImageUrl1)
-    //   imgList.push(nowImageUrl1);
-    // }
-    // setImgUrl(imgList)
-    setFileImage(imgFiles);
-    setImgUrl(imageList)
+      setImgUrl(e.target.files);
+      const imgFiles = [...fileImage]
+      for (let i = 0; i<setImgUrl.length; i++){
+        const nowImageUrl = URL.createObjectURL(e.target.files[i]);
+        imgFiles.push(nowImageUrl)
+      }
+      setFileImage(imgFiles);
   };
   const handleDeleteImage = (id) => {
     setFileImage(fileImage.filter((_,index) => index !== id))
@@ -79,15 +79,9 @@ const Update = () => {
   const onChangeHandler = (event, setState) => setState(event.target.value);
 
   const onUpdatePost = async () => {
-    let json = JSON.stringify(data);
-    console.log(json)
-    const blob = new Blob([json], { type: "application/json" });
     const formData = new FormData();
-    formData.append("data", blob);
-    // for(let i=0; i<imgUrl.length; i++){
-    //   formData.append("imgUrl",imgUrl[i])
-    // }
-    formData.append("image",imgUrl[0])
+    formData.append("data", data);
+    formData.append("imgUrl", fileImage);
     
     const payload = {
       id:id,
