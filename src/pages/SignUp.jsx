@@ -2,63 +2,143 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
-// import { useDispatch } from "react-redux";
-// import { signUp } from "../redux/modules/userSlice";
+import { useDispatch } from "react-redux";
+import { signUp } from "../redux/modules/userSlice";
+import x버튼 from "../img/x버튼.png";
+import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
+import axios from "axios";
 
 function SignUp() {
   // const dispatch = useDispatch();
   let navigate = useNavigate();
-  const [data, setData] = useState({ nickname: "", email: "", password: "" });
+  const [input, setInput] = useState({
+    nickname: "",
+    password: "",
+    passwordConfirm: "",
+  });
 
-  const onChangeHandler = (event) => {
-    const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+  // const onChangeHandler = (event) => {
+  //   const { name, value } = event.target;
+  //   setInput({ ...input, [name]: value });
+  // };
+
+  const [nicknameError, setNicknameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordConfirmError, setPasswordConfirmError] = useState(false);
+
+  //유효성 체크
+  const onChangeNickname = (e) => {
+    const nicknameRegex = /^(?=.*[a-zA-z])(?=.*[0-9]).{5,12}$/;
+    if (!e.target.value || nicknameRegex.test(e.target.value))
+      setNicknameError(false);
+    else setNicknameError(true);
+    // setInput(e.target.value);
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+  const onChangePassword = (e) => {
+    const passwordRegex =
+      /^(?=.+[a-zA-z])(?=.+[!@#$%^*+=-])(?=.+[0-9]).{8,25}$/;
+
+    if (!e.target.value || passwordRegex.test(e.target.value))
+      setPasswordError(false);
+    else setPasswordError(true);
+
+    if (!input.passwordConfirm || e.target.value === input.passwordConfirm)
+      setPasswordConfirmError(false);
+    else setPasswordConfirmError(true);
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+  const onChangePasswordConfirm = (e) => {
+    if (input.password === e.target.value) setPasswordConfirmError(false);
+    else setPasswordConfirmError(true);
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+
+  //유효성 검사
+  const validation = () => {
+    if (!input.nickname) setNicknameError(true);
+    if (!input.password) setPasswordError(true);
+    if (!input.passwordConfirm) setPasswordConfirmError(true);
+
+    if (nicknameError && passwordError && passwordConfirmError) return true;
+    else return false;
+  };
+  console.log(input.nickname);
+  console.log(input.password);
+  console.log(input.passwordConfirm);
+
+  //회원가입 버튼 누르면 실행
+  const addHandler = async () => {
+    const { nickname, password, passwordConfirm } = input;
+    const user = {
+      nickname: nickname,
+      password: password,
+      passwordConfirm: passwordConfirm,
+    };
+    if (input.password !== input.passwordConfirm) {
+      return alert("비밀번호가 일치하지 않습니다");
+    } else {
+      try {
+        const data = await axios.post("http://13.125.225.96:8080/signup", user);
+        console.log(data);
+        if (data.data.success === false) alert(data.data.error.message);
+        else {
+          alert("회원가입이 완료되었습니다.");
+          navigate("/login");
+        }
+      } catch (error) {
+        alert("가입에 실패했습니다");
+      }
+    }
+    console.log(validation());
+    if (validation()) {
+    }
+    return;
   };
 
   return (
     <Wrapper>
+      <XWrap>
+        <X src={x버튼}></X>
+      </XWrap>
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
       <form>
         <Inputbox>
           <input
-            onChange={onChangeHandler}
-            placeholder="닉네임을 입력해주세요"
-            type="nickname"
+            className="inputstyle"
+            onChange={onChangeNickname}
+            placeholder="아이디를 입력해주세요"
+            type="id"
             name="nickname"
-            value={data.nickname}
-            required
+            value={input.nickname}
+            // required
           />
         </Inputbox>
         <Inputbox>
           <input
-            onChange={onChangeHandler}
-            placeholder="이메일을 입력해주세요"
-            type="email"
-            name="email"
-            value={data.email}
-            required
-          />
-        </Inputbox>
-        <Inputbox>
-          <input
-            onChange={onChangeHandler}
+            className="inputstyle"
+            onChange={onChangePassword}
             placeholder="비밀번호(영문,숫자,특수문자포함 6글자 이상)"
             type="password"
             name="password"
-            value={data.password}
-            required
+            value={input.password}
+            // required
           />
         </Inputbox>
         <Inputbox>
           <input
-            onChange={onChangeHandler}
+            className="inputstyle"
+            onChange={onChangePasswordConfirm}
             placeholder="비밀번호 재입력"
             type="password"
-            name="password"
-            value={data.password}
-            required
+            name="passwordConfirm"
+            value={input.passwordConfirm}
+            // required
           />
         </Inputbox>
 
@@ -66,9 +146,10 @@ function SignUp() {
           <button
             type="submit"
             className="signupstyle"
-            // onClick={() => {
-            //   dispatch(signUp(data));
-            // }}
+            onClick={() => {
+              addHandler();
+              console.log(input);
+            }}
           >
             <p>회원가입</p>
           </button>
@@ -108,7 +189,18 @@ let Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding-top: 40px;
+  /* border: 1px solid red; */
+  display: flex;
+`;
+
+const X = styled.img`
+  width: 20px;
+`;
+
+const XWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: right;
 `;
 
 const Buttonstyle = styled.button`
@@ -118,7 +210,6 @@ const Buttonstyle = styled.button`
   background-color: none;
   padding: 0px;
   height: 30px;
-
   .loginstyle {
     background: none;
     border: 1px solid;
@@ -131,8 +222,8 @@ const Buttonstyle = styled.button`
     display: flex;
     border-radius: 5px;
     width: 100px;
+    cursor: pointer;
   }
-
   .signupstyle {
     background-color: #d80c18;
     border-style: none;
@@ -144,6 +235,7 @@ const Buttonstyle = styled.button`
     display: flex;
     border-radius: 5px;
     width: 100px;
+    cursor: pointer;
   }
 `;
 
@@ -153,6 +245,12 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+
+  .inputstyle {
+    width: 250px;
+    height: 25px;
+    font-family: "Noto Sans KR", sans-serif;
+  }
 `;
 
 const App = styled.img`

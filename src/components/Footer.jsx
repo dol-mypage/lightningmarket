@@ -130,7 +130,7 @@ const BottomList = styled.div`
 
 const List = styled.div`
   display: flex;
-  margin: 22px auto;
+  margin: 25px auto;
   width: 1024px;
   color: rgb(51, 51, 51);
   font-size: 12px;
