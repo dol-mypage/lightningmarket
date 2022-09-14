@@ -8,12 +8,17 @@ import AddForm from "./pages/AddForm";
 import DetailPage from "./pages/DetailPage";
 import SignUp from "./pages/SignUp";
 import MyShop from "./pages/MyShop";
-import { Route, Routes } from "react-router-dom";
 import Update from "./pages/Update";
+import { Route, Routes } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
 
 function App() {
   return (
     <>
+      <Helmet>
+        <title>번개장터</title>
+      </Helmet>
       <Header1 />
       <Header2 />
       {/* <Header3 /> */}
