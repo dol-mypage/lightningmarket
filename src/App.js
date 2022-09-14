@@ -9,22 +9,33 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./pages/SignUp";
 import MyShop from "./pages/MyShop";
 import Update from "./pages/Update";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 
+
 function App() {
+  let [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   return (
     <>
+      
       <Helmet>
         <title>번개장터</title>
       </Helmet>
-      <Header1 />
+      <Header1 open={openModal} />
       <Header2 />
       {/* <Header3 /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home mo={modalOpen} />} />
+        <Route path="/login" element={<Login close={closeModal} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/myshop" element={<MyShop />} />
         <Route path="/products/new" element={<AddForm />} />
