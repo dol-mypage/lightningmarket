@@ -171,7 +171,6 @@ const Buttonstyle = styled.button`
     width: 100px;
     cursor: pointer;
   }
-
   .signupstyle {
     background: none;
     border: 1px solid;
@@ -201,6 +200,7 @@ const Inputbox = styled.div`
     font-family: "Noto Sans KR", sans-serif;
   }
 `;
+
 
 const App = styled.img`
   text-align: center;

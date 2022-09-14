@@ -23,10 +23,13 @@ function Banner() {
           onSlideChange={() => console.log("slide change")}
         >
           <SwiperSlide>
-            <img src="https://media.bunjang.co.kr/images/nocrop/875574653_w2058.jpg" />
+            <img src="https://media.bunjang.co.kr/images/nocrop/878946051_w2058.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://media.bunjang.co.kr/images/nocrop/878946051_w2058.jpg" />
+            <img src="https://media.bunjang.co.kr/images/nocrop/875280504_w3087.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://media.bunjang.co.kr/images/nocrop/875574653_w2058.jpg" />
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://media.bunjang.co.kr/images/nocrop/879100633_w2058.jpg" />
@@ -39,9 +42,6 @@ function Banner() {
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://media.bunjang.co.kr/images/nocrop/878453872_w2058.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://media.bunjang.co.kr/images/nocrop/875281381_w3087.jpg" />
           </SwiperSlide>
         </Swiper>
       </All>

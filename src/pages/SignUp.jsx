@@ -210,7 +210,6 @@ const Buttonstyle = styled.button`
   background-color: none;
   padding: 0px;
   height: 30px;
-
   .loginstyle {
     background: none;
     border: 1px solid;
@@ -225,7 +224,6 @@ const Buttonstyle = styled.button`
     width: 100px;
     cursor: pointer;
   }
-
   .signupstyle {
     background-color: #d80c18;
     border-style: none;
