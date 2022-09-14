@@ -11,7 +11,7 @@ import MyShop from "./pages/MyShop";
 import Update from "./pages/Update";
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
         <Route path="/products/new" element={<AddForm />} />
         <Route path="/products/:id" element={<DetailPage />} />
         <Route path="/products/update/:id" element={<Update />} />
+        <Route path="/products/search/:title" element={<Search/>}/>
       </Routes>
       <Footer />
     </>

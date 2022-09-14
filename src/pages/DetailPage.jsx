@@ -8,11 +8,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import blog from '../img/blog.png'
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import '../App.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { _getDetails,_deletePost,onLikePost } from '../redux/modules/PostSlice';
+import DeleteModal from '../components/deleteModal/DeleteModal';
 
 const DetailPage = () => {
     const {id} = useParams();
@@ -23,7 +24,10 @@ const DetailPage = () => {
     const dispatch=useDispatch();
     const {isLoading, error,detail} = useSelector((state) => state?.postSlice)
     // console.log(useSelector((state) => state))
-  
+    const [note,setNote] =useState(false)
+    const close = () => {
+        setNote(false);
+    }
     useEffect(() => {
       dispatch(_getDetails(id));
     }, []);
@@ -43,6 +47,10 @@ const DetailPage = () => {
       };
 
   return (
+    <>
+    {note === true
+    ?<DeleteModal detail={detail} close={close}/>
+    :null}
     <div>
       <Box>
         <Cover>
@@ -94,7 +102,7 @@ const DetailPage = () => {
                 {detail.nickname === nickname
                 ?<Button>
                     <Jimbut onClick={onLike}>❤찜 {detail.likes}</Jimbut>
-                    <Bunbut onClick={() => dispatch(_deletePost(detail))}>삭제하기</Bunbut>
+                    <Bunbut onClick={() => setNote(true)}>삭제하기</Bunbut>
                     <Buybut onClick={() => navigate('/products/update/'+detail.id)}>수정하기</Buybut>
                 </Button>
                 :
@@ -182,6 +190,7 @@ const DetailPage = () => {
       </BoxDesc>
       </Box>
     </div>
+    </>
   )
 }
 const Box = styled.div`
