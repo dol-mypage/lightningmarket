@@ -41,15 +41,20 @@ const Form = () => {
       setFileImage(imgFiles);
   };
   const handleDeleteImage = (id) => {
+
     setFileImage(fileImage.filter((_,index) => index !== id))
   }
+
   const data = {
+
     title:title,
     content:content,
     price:price
   }
   //value를 setState해준다
+
   console.log(data)
+
   const onChangeHandler = (event, setState) => setState(event.target.value);
 
   const onAddPost = async () => {
