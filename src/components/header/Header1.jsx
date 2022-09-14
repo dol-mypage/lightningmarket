@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const Header1 = () => {
+const Header1 = (props) => {
+  const { open } = props;
+  console.log(props);
   let navigate = useNavigate();
 
   return (
@@ -31,11 +33,8 @@ const Header1 = () => {
           </Butt>
         </AllSt>
         <LoGin>
-          <Butt
-            onClick={() => {
-              navigate("/Login");
-            }}
-          >
+          <Butt onClick={open}>
+            {/* 로그인/회원가입 버튼을 클릭했을 때 모달을 연다. */}
             로그인/회원가입
           </Butt>
           <Butt

@@ -7,9 +7,12 @@ import x버튼 from "../img/x버튼.png";
 // import { login } from "../redux/modules/userSlice";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   // const dispatch = useDispatch();
+  const { close } = props;
+  console.log(close);
   let navigate = useNavigate();
+
   const [inputvalue, setInputvalue] = useState({
     nickname: "",
     password: "",
@@ -46,10 +49,12 @@ const Login = () => {
   return (
     <Wrapper>
       <XWrap>
-        <X src={x버튼}></X>
+        <X src={x버튼} onClick={close}></X>
       </XWrap>
       <App src={로그인앱버튼}></App>
+
       <Title>번개장터로 중고거래 시작하기</Title>
+
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
       <form onSubmit={onSubmitHandler}>
         <Inputbox>
@@ -67,7 +72,7 @@ const Login = () => {
           <input
             className="inputstyle"
             onChange={onChangeHandler}
-            placeholder="비밀번호(소문자 혹은 숫자 포함하여  8글자 이상)"
+            placeholder="비밀번호를 입력해주세요"
             type="password"
             name="password"
             value={inputvalue.password}
@@ -113,8 +118,8 @@ export default Login;
 
 let Wrapper = styled.div`
   font-family: "Noto Sans KR", sans-serif;
-  width: 400px;
-  height: 425px;
+  width: 419.998px;
+  height: 465.886px;
   border: none;
   background-color: #f7f7f7;
   margin: auto;
@@ -122,18 +127,27 @@ let Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  /* border: 1px solid red; */
   display: flex;
+  border: 1px solid red;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
 `;
 
 const X = styled.img`
-  width: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `;
 
 const XWrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: right;
+  margin-right: 20px;
 `;
 
 const Buttonstyle = styled.button`
@@ -192,6 +206,7 @@ const App = styled.img`
   text-align: center;
   margin: auto auto 10px;
   width: 30px;
+  margin-top: 0px;
 `;
 
 const Title = styled.div`
@@ -201,6 +216,9 @@ const Title = styled.div`
   color: #212121;
   text-align: center;
   font-weight: bold;
+  letter-spacing: -0.5px;
+  width: 419.998px;
+  height: 29.994px;
 `;
 
 const Body = styled.div`
@@ -209,6 +227,9 @@ const Body = styled.div`
   color: #212121;
   font-size: 14px;
   text-align: center;
+  width: 419.998px;
+  height: 21.003px;
+  letter-spacing: -0.5px;
 `;
 
 const HelpWrapper = styled.div`

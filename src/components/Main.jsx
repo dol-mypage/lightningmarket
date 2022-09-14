@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import Banner from "./Banner";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
+import Login from "../pages/Login";
 
-function Main() {
+function Main(props) {
+  console.log(props);
+  const { mo } = props.props;
+  console.log(mo);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
-  console.log(products)
+  console.log(products);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
@@ -20,7 +24,7 @@ function Main() {
   // 컴포넌트 리턴
 
   return (
-    <>
+    <div>
       <Banner />
       <Section>
         <H2>오늘의 상품 추천</H2>
@@ -56,8 +60,13 @@ function Main() {
             </Card>
           </ItemContainer>
         </ItemInfos>
+        <div>
+          {mo ? <Login></Login> : null}
+          {/*open이 true면 <Login>을 보여줘. open이 false면 아무것도 
+보여주지마. 삼항연산자로 적어줌.   */}
+        </div>
       </Section>
-    </>
+    </div>
   );
 }
 

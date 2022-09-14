@@ -1,10 +1,11 @@
 import React from "react";
 import Main from "../components/Main";
 
-const Home = () => {
+const Home = (props) => {
+  console.log(props);
   return (
     <div>
-      <Main />
+      <Main props={props} />
     </div>
   );
 };

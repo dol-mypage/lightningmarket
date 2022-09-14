@@ -39,30 +39,35 @@ const Form = () => {
     setFileImage(imgFiles);
   };
   const handleDeleteImage = (id) => {
-
-    setFileImage(fileImage.filter((_,index) => index !== id))
-  }
+    setFileImage(fileImage.filter((_, index) => index !== id));
+  };
   const data = {
-    title:title,
-    content:content,
-    price:price
-  }
+    title: title,
+    content: content,
+    price: price,
+  };
 
   //value를 setState해준다
-  console.log(data)
+  console.log(data);
   const onChangeHandler = (event, setState) => setState(event.target.value);
 
   const onAddPost = async () => {
     const formData = new FormData();
     formData.append("data", data);
     formData.append("imgUrl", fileImage);
-    const res = await axios.post("http://13.125.225.96:8080/auth/products/new", formData, {
-      headers: {
-        "Content-Type": "multipart/form",
-      },
-    });
-    console.log(formData)
-    for (let value of formData.values()) { console.log(value); }
+    const res = await axios.post(
+      "http://13.125.225.96:8080/auth/products/new",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form",
+        },
+      }
+    );
+    console.log(formData);
+    for (let value of formData.values()) {
+      console.log(value);
+    }
     return res.data;
   };
 
