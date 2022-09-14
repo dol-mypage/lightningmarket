@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Header1 = () => {
   let navigate = useNavigate();
+
+  const user = localStorage.getItem("nickname");
 
   return (
     <All>
@@ -30,22 +33,43 @@ const Header1 = () => {
             즐겨찾기
           </Butt>
         </AllSt>
-        <LoGin>
-          <Butt
-            onClick={() => {
-              navigate("/Login");
-            }}
-          >
-            로그인/회원가입
-          </Butt>
-          <Butt
-            onClick={() => {
-              navigate("/myshop");
-            }}
-          >
-            내상점
-          </Butt>
-        </LoGin>
+
+        {user == null ? (
+          <LoGin>
+            <Butt
+              onClick={() => {
+                navigate("/Login");
+              }}
+            >
+              로그인/회원가입
+            </Butt>
+            <Butt
+              onClick={() => {
+                navigate("/Login");
+              }}
+            >
+              내상점
+            </Butt>
+          </LoGin>
+        ) : (
+          <LoGin>
+            <Butt
+              onClick={() => {
+                navigate("/Login");
+              }}
+            >
+              로그아웃
+            </Butt>
+            <Butt>알림</Butt>
+            <Butt
+              onClick={() => {
+                navigate("/myshop");
+              }}
+            >
+              내상점
+            </Butt>
+          </LoGin>
+        )}
       </All1>
     </All>
   );
