@@ -1,6 +1,6 @@
 import Header1 from "./components/header/Header1";
 import Header2 from "./components/header/Header2";
-import Header3 from "./components/header/Header3";
+// import Header3 from "./components/header/Header3";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -9,9 +9,9 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./pages/SignUp";
 import MyShop from "./pages/MyShop";
 import Update from "./pages/Update";
-
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       </Helmet>
       <Header1 />
       <Header2 />
-      <Header3 />
+      {/* <Header3 /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

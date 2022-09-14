@@ -143,6 +143,7 @@ const Buttonstyle = styled.button`
   background-color: none;
   padding: 0px;
   height: 30px;
+
   .loginstyle {
     background-color: #d80c18;
     color: white;
@@ -178,12 +179,14 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+
   .inputstyle {
     width: 250px;
     height: 25px;
     font-family: "Noto Sans KR", sans-serif;
   }
 `;
+
 
 const App = styled.img`
   text-align: center;

@@ -245,6 +245,7 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+
   .inputstyle {
     width: 250px;
     height: 25px;
