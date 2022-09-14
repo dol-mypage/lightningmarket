@@ -9,15 +9,8 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./pages/SignUp";
 import MyShop from "./pages/MyShop";
 import Update from "./pages/Update";
-<<<<<<< HEAD
-
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-=======
-import { Route, Routes } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-
->>>>>>> 08e57995a8b8f91ee8d06cd29eb22ac744fc1581
 
 function App() {
   return (
