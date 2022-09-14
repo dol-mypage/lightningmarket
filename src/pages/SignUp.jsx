@@ -123,7 +123,7 @@ function SignUp() {
           <input
             className="inputstyle"
             onChange={onChangePassword}
-            placeholder="비밀번호(영문,숫자,특수문자포함 6글자 이상)"
+            placeholder="비밀번호를 입력해주세요"
             type="password"
             name="password"
             value={input.password}
@@ -134,7 +134,7 @@ function SignUp() {
           <input
             className="inputstyle"
             onChange={onChangePasswordConfirm}
-            placeholder="비밀번호 재입력"
+            placeholder="비밀번호를 재입력해주세요"
             type="password"
             name="passwordConfirm"
             value={input.passwordConfirm}
@@ -245,7 +245,10 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 08e57995a8b8f91ee8d06cd29eb22ac744fc1581
   .inputstyle {
     width: 250px;
     height: 25px;
