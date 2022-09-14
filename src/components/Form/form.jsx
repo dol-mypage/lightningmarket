@@ -10,7 +10,7 @@ const Form = () => {
   const [price, setPrice] = useState(0);
   const [content, setContent] = useState("");
   const [fileImage, setFileImage] = useState([]);
-  console.log(imgUrl)
+  console.log(imgUrl);
   const checkOnlyOne = (checkThis) => {
     const checkboxes = document.getElementsByName("change");
     for (let i = 0; i < checkboxes.length; i++) {
@@ -29,10 +29,9 @@ const Form = () => {
     }
   };
 
-
   const onChangeImg = (e) => {
-    const imageList = e.target.files
-    console.log(imageList)
+    const imageList = e.target.files;
+    console.log(imageList);
     const imgFiles = [...fileImage];
     for (let i = 0; i < imageList.length; i++) {
       const nowImageUrl = URL.createObjectURL(e.target.files[i]);
@@ -46,26 +45,24 @@ const Form = () => {
     // }
     // setImgUrl(imgList)
     setFileImage(imgFiles);
-    setImgUrl(imageList)
+    setImgUrl(imageList);
   };
   const handleDeleteImage = (id) => {
     setFileImage(fileImage.filter((_, index) => index !== id));
   };
   const data = {
+    title: title,
+    content: content,
+    price: Number(price),
+  };
 
-    title:title,
-    content:content,
-    price:Number(price)
-  }
-  
   //value를 setState해준다
 
   const onChangeHandler = (event, setState) => setState(event.target.value);
 
   const onAddPost = async (e) => {
-  
     let json = JSON.stringify(data);
-    console.log(json)
+    console.log(json);
     const blob = new Blob([json], { type: "application/json" });
     const formData = new FormData();
 
@@ -73,19 +70,24 @@ const Form = () => {
     // for(let i=0; i<imgUrl.length; i++){
     //   formData.append("imgUrl",imgUrl[i])
     // }
-    formData.append("image",imgUrl[0])
-    const res = await axios.post("http://13.125.225.96:8080/auth/products/new", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: localStorage.getItem("Authorization"),
-        RefreshToken: localStorage.getItem("RefreshToken"),
-
-      },
-    });
-    window.location.replace('/')
-    for (let value of formData.values()) { console.log(value); }
-    console.log(res)
-    console.log(formData)
+    formData.append("image", imgUrl[0]);
+    const res = await axios.post(
+      "http://13.125.225.96:8080/auth/products/new",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: localStorage.getItem("Authorization"),
+          RefreshToken: localStorage.getItem("RefreshToken"),
+        },
+      }
+    );
+    window.location.replace("/");
+    for (let value of formData.values()) {
+      console.log(value);
+    }
+    console.log(res);
+    console.log(formData);
     return res.data;
   };
 
@@ -617,28 +619,28 @@ const DivCount = styled.div`
   }
 `;
 const Btnarea = styled.div`
-    position:sticky;
-    bottom:0px;
-    left:0px;
-    width: 100%;
-    height: 110px;
-    background: rgb(250, 250, 253);
-    box-shadow: rgb(234 233 241) 0px -1px 0px 0px;
-    padding: 25px 0px 20px;
-    box-sizing: border-box;
-    button {
-        display: absolute;
-        border:none;
-        height: 60px;
-        width: 10rem;
-        color: rgb(255, 255, 255);
-        font-size: 20px;
-        font-weight: 700;
-        border-radius: 2px;
-        background: rgb(255, 80, 88);
-        margin-left:1300px;
-    }
-`
+  position: sticky;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 110px;
+  background: rgb(250, 250, 253);
+  box-shadow: rgb(234 233 241) 0px -1px 0px 0px;
+  padding: 25px 0px 20px;
+  box-sizing: border-box;
+  button {
+    display: absolute;
+    border: none;
+    height: 60px;
+    width: 10rem;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 2px;
+    background: rgb(255, 80, 88);
+    margin-left: 1300px;
+  }
+`;
 
 const Btnarea1 = styled.div`
   position: relative;

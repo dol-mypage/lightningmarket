@@ -22,8 +22,8 @@ function Main(props) {
   console.log(products?.data?.data);
   // 컴포넌트 리턴
 
-
-
+  return (
+    <div>
       <Section>
         <H2>오늘의 상품 추천</H2>
         <ItemInfos>
