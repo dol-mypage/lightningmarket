@@ -143,6 +143,10 @@ const Buttonstyle = styled.button`
   background-color: none;
   padding: 0px;
   height: 30px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 08e57995a8b8f91ee8d06cd29eb22ac744fc1581
   .loginstyle {
     background-color: #d80c18;
     color: white;
@@ -178,6 +182,10 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 08e57995a8b8f91ee8d06cd29eb22ac744fc1581
   .inputstyle {
     width: 250px;
     height: 25px;
@@ -185,6 +193,10 @@ const Inputbox = styled.div`
   }
 `;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 08e57995a8b8f91ee8d06cd29eb22ac744fc1581
 const App = styled.img`
   text-align: center;
   margin: auto auto 10px;
