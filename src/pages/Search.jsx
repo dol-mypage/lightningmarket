@@ -8,19 +8,20 @@ import Banner from "../components/Banner";
 import { _searchPost } from "../redux/modules/PostSlice";
 
 function Search() {
-  let {searchWord} =useParams();
-  console.log(searchWord)
+  let {title} =useParams();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.product.data);
+  const products = useSelector((state) => state.postSlice.search);
   console.log(useSelector((state) => state));
-
+  
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
-    dispatch(_searchPost());
+    dispatch(_searchPost(title));
   }, []);
   // 컴포넌트 리턴
-
+  
+  
   return (
     <>
       <Section>

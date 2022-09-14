@@ -9,6 +9,7 @@ const initialState = {
     isLoading: false,
     error: null,
 }
+
 export const _getDetails = createAsyncThunk(
     "PostSlice/getDetails",
     async (payload,thunkAPI) => {
@@ -99,7 +100,7 @@ export const _searchPost = createAsyncThunk(
             }
             )
             console.log(data)
-            window.location.replace(`/products/search/${payload}`)
+            
         return thunkAPI.fulfillWithValue(data.data.data)
         }catch(error){
         return thunkAPI.rejectWithValue(error);
@@ -110,7 +111,11 @@ export const _searchPost = createAsyncThunk(
 export const postSlice = createSlice({
     name:"post",
     initialState,
-    reducers:{},
+    reducers:{ likePost(state, action){
+                let index = state.post.findIndex(post => post.id === action.payload.id);
+                state.post[index].likes +=1;
+                console.log("작동")
+            }},
 extraReducers:(builder) => {
         builder
             .addCase(_getDetails.pending, (state) => {
@@ -180,5 +185,5 @@ extraReducers:(builder) => {
 })
 
 
-export const {} = postSlice.actions;
+export const {likePost} = postSlice.actions;
 export default postSlice

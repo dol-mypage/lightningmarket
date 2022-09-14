@@ -10,7 +10,8 @@ const Header2 = () => {
   const products = useSelector((state) => state.product.data);
   const [searchWord, setSearchWord] = useState("");
   const [search, setSearch] = useState("");
-
+ 
+  
   return (
     <MainHeader>
       <MainHeaderContainer>
