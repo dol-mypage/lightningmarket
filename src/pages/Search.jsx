@@ -1,29 +1,28 @@
 import styled from "styled-components";
 
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
-import Login from "../pages/Login";
+import Banner from "../components/Banner";
+import { _searchPost } from "../redux/modules/PostSlice";
 
-function Main(props) {
-  console.log(props);
-  const { mo } = props.props;
-  console.log(mo);
+function Search() {
+  let {searchWord} =useParams();
+  console.log(searchWord)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
-  console.log(products);
+  console.log(useSelector((state) => state));
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
-    dispatch(__getProduct());
-  }, [dispatch]);
-  console.log(products?.data?.data);
+    dispatch(_searchPost());
+  }, []);
   // 컴포넌트 리턴
 
-
-
+  return (
+    <>
       <Section>
         <H2>오늘의 상품 추천</H2>
         <ItemInfos>
@@ -40,7 +39,7 @@ function Main(props) {
                     <CardInner>
                       <CardHead>
                         <img src={product.imgUrl} />
-                        <Sth />
+                        <Sth/>
                       </CardHead>
                       <CardContents>
                         <ItemName>{product.title}</ItemName>
@@ -56,13 +55,8 @@ function Main(props) {
             </div>
           </ItemContainer>
         </ItemInfos>
-        <div>
-          {mo ? <Login></Login> : null}
-          {/*open이 true면 <Login>을 보여줘. open이 false면 아무것도 
-보여주지마. 삼항연산자로 적어줌.   */}
-        </div>
       </Section>
-    </div>
+    </>
   );
 }
 
@@ -143,4 +137,4 @@ const Time = styled.div`
   color: rgb(136, 136, 136);
 `;
 
-export default Main;
+export default Search;
