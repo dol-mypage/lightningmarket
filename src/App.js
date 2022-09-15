@@ -1,7 +1,3 @@
-import Header1 from "./components/header/Header1";
-import Header2 from "./components/header/Header2";
-import Header3 from "./components/header/Header3";
-import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AddForm from "./pages/AddForm";
@@ -9,6 +5,11 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./pages/SignUp";
 import MyShop from "./pages/MyShop";
 import Update from "./pages/Update";
+import Header1 from "./components/header/Header1";
+import Header2 from "./components/header/Header2";
+import Header3 from "./components/header/Header3";
+import Footer from "./components/Footer";
+
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -16,6 +17,7 @@ import { Helmet } from "react-helmet-async";
 import Search from "./pages/Search";
 
 function App() {
+
   // 로그인 모달
   let [modal1, setModal1] = useState(false);
   const openModal1 = () => {

@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
@@ -11,6 +10,7 @@ function Main(props) {
   console.log(props);
   const { mo1, mo2 } = props;
   console.log(mo2);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
@@ -21,7 +21,7 @@ function Main(props) {
     dispatch(__getProduct());
   }, [dispatch]);
   console.log(products?.data?.data);
-  // 컴포넌트 리턴
+
 
   return (
     <div>
@@ -62,9 +62,8 @@ function Main(props) {
           {mo2 ? <SignUp></SignUp> : null}
           {/* mo1이 true면 <Login>을 보여줘. open이 false면 아무것도 
 보여주지마. 삼항연산자로 적어줌.   */}
-        </div>
-      </Section>
-    </div>
+      </div>
+    </Section>
   );
 }
 
@@ -133,6 +132,7 @@ const CardHead = styled.div`
 `;
 
 const Sth = styled.div``;
+
 const CardContents = styled.div`
   padding: 15px 10px;
   height: 50px;

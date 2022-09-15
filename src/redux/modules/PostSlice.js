@@ -1,93 +1,101 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import React from "react";
 import axios from "axios";
 
 const initialState = {
+
     post: [],
     detail:{},
     search:[],
     isLoading: false,
     error: null,
 }
-export const _getDetails = createAsyncThunk(
-    "PostSlice/getDetails",
-    async (payload,thunkAPI) => {
-      try {
-        const data = await axios.get(`http://13.125.225.96:8080/products/${payload}`,{
-            headers:{
-                Authorization: localStorage.getItem("Authorization"),
-                RefreshToken: localStorage.getItem("RefreshToken"),
-            }
-        });
-        console.log(data);
-        return thunkAPI.fulfillWithValue(data.data.data);
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error);
-      }
-    }
-  );
 
-export const _deletePost = createAsyncThunk(
-    "PostSlice/delete",
-    async (payload, thunkAPI) => {
-        try{
-            const data = await axios.delete(
-                `http://13.125.225.96:8080/auth/products/${payload.id}`,
-                {
-                    headers:{
-                        Authorization: localStorage.getItem("Authorization"),
-                        RefreshToken: localStorage.getItem("RefreshToken"),}
-                }
-            )
-            window.location.replace('/')
-            return thunkAPI.fulfillWithValue(data.data);
-        }catch(error){
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-)
-export const _updatePost = createAsyncThunk(
-    "PostSlice/update",
-    async (payload,thunkAPI) => {
-        try{
-            const data = await axios.put(
-                `http://13.125.225.96:8080/auth/products/${payload.id}`,
-            payload.data,{
-                headers:{
-                    "Content-Type": "multipart/form",
-                    Authorization: localStorage.getItem("Authorization"),
-                    RefreshToken: localStorage.getItem("RefreshToken"),
-                }
-            }
-            )
-            window.location.replace(`/products/${payload.id}`)
-            return thunkAPI.fulfillWithValue(data.data)
-        }catch(error){
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-)
-export const onLikePost = createAsyncThunk(
-    "like/onLikePost",
-    async (payload, thunkApI) => {
-      console.log(payload);
-      try {
-        const data = await axios.post(
-           `http://13.125.225.96:8080/products/likes/${payload}`,
-          {},{
-            headers:{
+export const _getDetails = createAsyncThunk(
+  "PostSlice/getDetails",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.get(
+        `http://13.125.225.96:8080/products/${payload}`,
+        {
+          headers: {
             Authorization: localStorage.getItem("Authorization"),
             RefreshToken: localStorage.getItem("RefreshToken"),
-            }
-        }  //post는 두번째 인자가 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
-        );
-        return payload;
-      } catch (error) {
-        return thunkApI.rejectWithValue(error);
-      }
+          },
+        }
+      );
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
-  );
+  }
+);
+
+export const _deletePost = createAsyncThunk(
+  "PostSlice/delete",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.delete(
+        `http://13.125.225.96:8080/auth/products/${payload.id}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("Authorization"),
+            RefreshToken: localStorage.getItem("RefreshToken"),
+          },
+        }
+      );
+      window.location.replace("/");
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const _updatePost = createAsyncThunk(
+  "PostSlice/update",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.put(
+        `http://13.125.225.96:8080/auth/products/${payload.id}`,
+        payload.data,
+        {
+          headers: {
+            "Content-Type": "multipart/form",
+            Authorization: localStorage.getItem("Authorization"),
+            RefreshToken: localStorage.getItem("RefreshToken"),
+          },
+        }
+      );
+      window.location.replace(`/products/${payload.id}`);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const onLikePost = createAsyncThunk(
+  "like/onLikePost",
+  async (payload, thunkApI) => {
+    console.log(payload);
+    try {
+      const data = await axios.post(
+        `http://13.125.225.96:8080/products/likes/${payload}`,
+        {},
+        {
+          headers: {
+            Authorization: localStorage.getItem("Authorization"),
+            RefreshToken: localStorage.getItem("RefreshToken"),
+          },
+        } //post는 두번째 인자가 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
+      );
+      return payload;
+    } catch (error) {
+      return thunkApI.rejectWithValue(error);
+    }
+  }
+);
 export const _searchPost = createAsyncThunk(
+
     "postSlice/searchPost",
     async (payload, thunkAPI) => {
         console.log(payload)
@@ -99,18 +107,31 @@ export const _searchPost = createAsyncThunk(
             }
             )
             console.log(data)
-            window.location.replace(`/products/search/${payload}`)
+             
         return thunkAPI.fulfillWithValue(data.data.data)
         }catch(error){
         return thunkAPI.rejectWithValue(error);
+
         }
+      );
+      console.log(data);
+      window.location.replace(`/products/search/${payload}`);
+      return thunkAPI.fulfillWithValue(data.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
+  }
 );
 
 export const postSlice = createSlice({
+
     name:"post",
     initialState,
-    reducers:{},
+    reducers:{ likePost(state, action){
+                let index = state.post.findIndex(post => post.id === action.payload.id);
+                state.post[index].likes +=1;
+                console.log("작동")
+            }},
 extraReducers:(builder) => {
         builder
             .addCase(_getDetails.pending, (state) => {
@@ -180,5 +201,7 @@ extraReducers:(builder) => {
 })
 
 
-export const {} = postSlice.actions;
+export const {likePost} = postSlice.actions;
 export default postSlice
+
+

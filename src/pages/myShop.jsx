@@ -3,9 +3,18 @@ import styled from "styled-components";
 import MyProduct from "../components/MyProduct";
 import MyProfile from "../components/MyProfile";
 
+
 const MyShop = (props) => {
+import { Helmet } from "react-helmet-async";
+
+const MyShop = () => {
+  const user = localStorage.getItem("nickname");
+
   return (
     <div>
+      <Helmet>
+        <title>{user} | 번개장터</title>
+      </Helmet>
       <Section>
         <MyProfile />
         <MyProduct />
@@ -19,7 +28,7 @@ export default MyShop;
 const Section = styled.div`
   width: 1024px;
   margin: auto;
-  padding: 2rem 0px 15rem;
+  padding: 2rem 0px 8rem;
   display: flex;
   flex-wrap: wrap;
 `;

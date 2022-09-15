@@ -1,13 +1,53 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
 
 const Header1 = (props) => {
   const { open1 } = props;
   console.log(props);
   let navigate = useNavigate();
 
+<Helmet>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@17/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</Helmet>;
+
+
+const Header1 = () => {
+  let navigate = useNavigate();
   const user = localStorage.getItem("nickname");
+
+  //모달 오픈
+  const [modalOn, setModalOn] = React.useState(false);
+  //모달에서 취소버튼
+  const onOpenModal = () => {
+    setModalOn(!modalOn);
+  };
+  //모달 창 디자인
+  const Modal = () => {
+    return (
+      <AllModal>
+        <Modal1>
+          <Bg />
+          <ModalBox>
+            <h3>로그아웃</h3>
+            <p>로그아웃 하시겠습니까?</p>
+            <CloseBtn onClick={onOpenModal}>취소</CloseBtn>
+            <OKbutton>확인</OKbutton>
+          </ModalBox>
+        </Modal1>
+      </AllModal>
+    );
+  };
 
   return (
     <All>
@@ -36,6 +76,7 @@ const Header1 = (props) => {
         </AllSt>
 
         {user == null ? (
+
           <LoGin>
             <Butt onClick={open1}>
               {/* 로그인/회원가입 버튼을 클릭했을 때 로그인 모달을 연다. */}
@@ -44,14 +85,24 @@ const Header1 = (props) => {
             <Butt onClick={open1}>내상점</Butt>
           </LoGin>
         ) : (
+
           <LoGin>
+            <Butt>로그인/회원가입</Butt>
             <Butt
               onClick={() => {
-                navigate("/Login");
+                navigate("/myshop");
               }}
             >
-              로그아웃
+              내상점
             </Butt>
+          </LoGin>
+        ) : (
+          <LoGin>
+            <React.Fragment>
+              {/* 로그아웃 눌렀을때 모달창 띄움 */}
+              <Butt onClick={onOpenModal}>로그아웃</Butt>
+              {modalOn ? <Modal /> : ""}
+            </React.Fragment>
             <Butt>알림</Butt>
             <Butt
               onClick={() => {
@@ -131,4 +182,54 @@ const Butt = styled.div`
 const LoGin = styled.div`
   display: flex;
   flex-shrink: 0;
+`;
+
+//모달
+const AllModal = styled.div``;
+
+const Modal1 = styled.div`
+  position: fixed;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Bg = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+`;
+
+const ModalBox = styled.div`
+  position: absolute;
+  background-color: #fff;
+  width: 300px;
+  height: 185px;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CloseBtn = styled.div`
+  height: 50px;
+  width: 120px;
+  text-align: center;
+  font-size: 18px;
+  background-color: rgb(244, 244, 250);
+  color: rgb(114, 112, 127);
+`;
+const OKbutton = styled.div`
+  height: 50px;
+  width: 120px;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  background: rgb(255, 80, 88);
+  font-weight: bold;
 `;
