@@ -50,6 +50,10 @@
 <img src="https://img.shields.io/badge/AWS EC2(Ubuntu 18.04 LTS)-232F3E?style=flat&logo=Amazon AWS Boot&logoColor=white"/> <img src="https://img.shields.io/badge/AWS S3-232F3E?style=flat&logo=Amazon AWS Boot&logoColor=white"/><br>
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
 
+📌 FrontEnd
+<img src="#E34F26e"/> <br>
+
+<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
 
 ---
 
