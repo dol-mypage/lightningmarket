@@ -2,13 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import MyProduct from "../components/MyProduct";
 import MyProfile from "../components/MyProfile";
-
-
-const MyShop = (props) => {
 import { Helmet } from "react-helmet-async";
 
-const MyShop = () => {
-  const user = localStorage.getItem("nickname");
+const MyShop = (props) => {
+
+const user = localStorage.getItem("nickname");
 
   return (
     <div>
