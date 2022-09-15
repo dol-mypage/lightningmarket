@@ -108,18 +108,12 @@ export const _searchPost = createAsyncThunk(
             )
             console.log(data)
              
-        return thunkAPI.fulfillWithValue(data.data.data)
+        return thunkAPI.fulfillWithValue(data.data.data);
         }catch(error){
         return thunkAPI.rejectWithValue(error);
 
         }
-      );
-      console.log(data);
-      window.location.replace(`/products/search/${payload}`);
-      return thunkAPI.fulfillWithValue(data.data.data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
+
   }
 );
 

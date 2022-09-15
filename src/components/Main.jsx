@@ -24,7 +24,6 @@ function Main(props) {
 
 
   return (
-    <div>
       <Section>
         <H2>오늘의 상품 추천</H2>
         <ItemInfos>

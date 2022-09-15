@@ -3,12 +3,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-
-const Header1 = (props) => {
-  const { open1 } = props;
-  console.log(props);
-  let navigate = useNavigate();
-
 <Helmet>
   <script
     crossorigin
@@ -21,8 +15,8 @@ const Header1 = (props) => {
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </Helmet>;
 
-
-const Header1 = () => {
+const Header1 = (props) => {
+  const {open1} = props; 
   let navigate = useNavigate();
   const user = localStorage.getItem("nickname");
 
@@ -76,22 +70,10 @@ const Header1 = () => {
         </AllSt>
 
         {user == null ? (
-
           <LoGin>
-            <Butt onClick={open1}>
-              {/* 로그인/회원가입 버튼을 클릭했을 때 로그인 모달을 연다. */}
-              로그인/회원가입
-            </Butt>
-            <Butt onClick={open1}>내상점</Butt>
-          </LoGin>
-        ) : (
-
-          <LoGin>
-            <Butt>로그인/회원가입</Butt>
+            <Butt onClick={open1}>로그인/회원가입</Butt>
             <Butt
-              onClick={() => {
-                navigate("/myshop");
-              }}
+              onClick={open1}
             >
               내상점
             </Butt>
