@@ -24,44 +24,40 @@ function Main(props) {
 
 
   return (
-      <Section>
-        <H2>오늘의 상품 추천</H2>
-        <ItemInfos>
-          <ItemContainer>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
-              {products.map((product) => {
-                return (
-                  <div
-                    onClick={() => {
-                      navigate(`/products/${product.id}`);
-                    }}
-                    key={product.id}
-                  >
-                    <CardInner>
-                      <CardHead>
-                        <img src={product.imgUrl} />
-                        <Sth />
-                      </CardHead>
-                      <CardContents>
-                        <ItemName>{product.title}</ItemName>
-                        <ItemContentBottom>
-                          <Price>{product.price}</Price>
-                          <Time>2시간 전</Time>
-                        </ItemContentBottom>
-                      </CardContents>
-                    </CardInner>
-                  </div>
-                );
-              })}
-            </div>
-          </ItemContainer>
-        </ItemInfos>
-        <div>
-          {mo1 ? <Login></Login> : null}
-          {mo2 ? <SignUp></SignUp> : null}
-          {/* mo1이 true면 <Login>을 보여줘. open이 false면 아무것도 
-보여주지마. 삼항연산자로 적어줌.   */}
-      </div>
+
+    <Section>
+      <H2>오늘의 상품 추천</H2>
+      <ItemInfos>
+        <ItemContainer>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {products.map((product) => {
+              return (
+                <div
+                  onClick={() => {
+                    navigate(`/products/${product.id}`);
+                  }}
+                  key={product.id}
+                >
+                  <CardInner>
+                    <CardHead>
+                      <img src={product.imgUrl} />
+                      <Sth />
+                    </CardHead>
+                    <CardContents>
+                      <ItemName>{product.title}</ItemName>
+                      <ItemContentBottom>
+                        <Price>{product.price}</Price>
+                        <Time>2시간 전</Time>
+                      </ItemContentBottom>
+                    </CardContents>
+                  </CardInner>
+                </div>
+              );
+            })}
+          </div>
+        </ItemContainer>
+      </ItemInfos>
+
     </Section>
   );
 }
@@ -71,33 +67,10 @@ const H2 = styled.h2`
   margin-bottom: 24px;
 `;
 const Section = styled.section`
-  width: 1024px;
+  width: 1050px;
   margin: auto;
-  padding: 3.5rem 0px 1.5rem;
+  padding: 3rem 0px 1.5rem 30px;
 
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 99;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-
-  .modal.openModal {
-    display: flex;
-    align-items: center;
-    /* 팝업이 열릴때 스르륵 열리는 효과 */
-    animation: modal-bg-show 0.3s;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.6);
-  }
 `;
 
 const ItemInfos = styled.div`
@@ -105,7 +78,7 @@ const ItemInfos = styled.div`
   overflow: hidden;
 `;
 const ItemContainer = styled.div`
-  width: 1024px;
+  width: 1050px;
 `;
 
 const CardInner = styled.a`
@@ -118,14 +91,14 @@ const CardInner = styled.a`
 
 const CardHead = styled.div`
   position: relative;
-  width: 192px;
+  width: 194px;
   height: 194px;
   img {
     vertical-align: bottom;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 192px;
+    width: 194px;
     height: 194px;
   }
 `;
@@ -143,6 +116,7 @@ const ItemName = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 170px;
 `;
 
 const ItemContentBottom = styled.div`

@@ -2,27 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
-import { useDispatch } from "react-redux";
-import { signUp } from "../redux/modules/userSlice";
-import x버튼 from "../img/x버튼.png";
-import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
-function SignUp(props) {
-  // const dispatch = useDispatch();
-  const { close2 } = props;
-  console.log(close2);
+
+function SignUp() {
+
   let navigate = useNavigate();
   const [input, setInput] = useState({
     nickname: "",
     password: "",
     passwordConfirm: "",
   });
-
-  // const onChangeHandler = (event) => {
-  //   const { name, value } = event.target;
-  //   setInput({ ...input, [name]: value });
-  // };
 
   const [nicknameError, setNicknameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -103,9 +93,8 @@ function SignUp(props) {
 
   return (
     <Wrapper>
-      <XWrap>
-        <X src={x버튼} onClick={close2}></X>
-      </XWrap>
+
+
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
@@ -182,8 +171,10 @@ export default SignUp;
 
 let Wrapper = styled.div`
   font-family: "Noto Sans KR", sans-serif;
-  width: 419.998px;
-  height: 465.886px;
+
+  width: 450px;
+  height: 500px;
+
   border: none;
   background-color: #f7f7f7;
   margin: auto;
@@ -192,22 +183,8 @@ let Wrapper = styled.div`
   flex-direction: column;
   text-align: center;
   display: flex;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 99;
-`;
-
-const X = styled.img`
-  width: 20px;
-`;
-
-const XWrap = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: right;
+  margin-top: 100px;
+  margin-bottom: 100px;
 `;
 
 const Buttonstyle = styled.button`
