@@ -100,7 +100,7 @@ export const _searchPost = createAsyncThunk(
             }
             )
             console.log(data)
-            
+             
         return thunkAPI.fulfillWithValue(data.data.data)
         }catch(error){
         return thunkAPI.rejectWithValue(error);
