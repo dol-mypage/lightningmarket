@@ -2,12 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  post: [],
-  detail: {},
-  search: [],
-  isLoading: false,
-  error: null,
-};
+
+    post: [],
+    detail:{},
+    search:[],
+    isLoading: false,
+    error: null,
+}
+
 export const _getDetails = createAsyncThunk(
   "PostSlice/getDetails",
   async (payload, thunkAPI) => {
@@ -93,14 +95,23 @@ export const onLikePost = createAsyncThunk(
   }
 );
 export const _searchPost = createAsyncThunk(
-  "postSlice/searchPost",
-  async (payload, thunkAPI) => {
-    console.log(payload);
-    try {
-      const data = await axios.get(
-        `http://13.125.225.96:8080/products/search/${payload}`,
-        {
-          headers: {},
+
+    "postSlice/searchPost",
+    async (payload, thunkAPI) => {
+        console.log(payload)
+        try{
+            const data = await axios.get(
+                `http://13.125.225.96:8080/products/search/${payload}`,
+            {
+                headers:{}
+            }
+            )
+            console.log(data)
+             
+        return thunkAPI.fulfillWithValue(data.data.data)
+        }catch(error){
+        return thunkAPI.rejectWithValue(error);
+
         }
       );
       console.log(data);
@@ -113,78 +124,84 @@ export const _searchPost = createAsyncThunk(
 );
 
 export const postSlice = createSlice({
-  name: "post",
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(_getDetails.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(_getDetails.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.detail = action.payload;
-        console.log(state.detail);
-      })
-      .addCase(_getDetails.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
-    builder
-      .addCase(_deletePost.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(_deletePost.fulfilled, (state, action) => {
-        state.isLoading = false;
-        const deleteState = state.data.findIndex(
-          (post) => post.id === action.payload
-        );
-        state.post.slice(deleteState, 1);
-      })
-      .addCase(_deletePost.rejected, (state, action) => {
-        state.isLoading = true;
-        state.error = action.payload;
-      });
-    builder
-      .addCase(_updatePost.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(_updatePost.fulfilled, (state, action) => {
-        state.isLoading = true;
-        state.data = action.payload;
-      })
-      .addCase(_updatePost.rejected, (state, action) => {
-        state.isLoading = true;
-        state.error = action.payload;
-      });
-    builder
-      .addCase(onLikePost.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(onLikePost.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.detail = { ...state.detail, likes: state.detail.likes };
-        console.log(state.detail);
-      })
-      .addCase(onLikePost.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
-    builder
-      .addCase(_searchPost.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(_searchPost.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.search = action.payload;
-        console.log(state.detail);
-      })
-      .addCase(_searchPost.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
-  },
-});
 
-export const {} = postSlice.actions;
-export default postSlice;
+    name:"post",
+    initialState,
+    reducers:{ likePost(state, action){
+                let index = state.post.findIndex(post => post.id === action.payload.id);
+                state.post[index].likes +=1;
+                console.log("작동")
+            }},
+extraReducers:(builder) => {
+        builder
+            .addCase(_getDetails.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(_getDetails.fulfilled, (state,action) => {
+                state.isLoading = false;
+                state.detail = action.payload;
+                console.log(state.detail)
+            })
+            .addCase(_getDetails.rejected, (state,action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+        builder
+            .addCase(_deletePost.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(_deletePost.fulfilled, (state,action) => {
+                state.isLoading = false;
+                const deleteState = state.data.findIndex(post => post.id === action.payload)
+                state.post.slice(deleteState,1)
+            })
+            .addCase(_deletePost.rejected, (state,action) => {
+                state.isLoading = true;
+                state.error = action.payload;
+            })
+        builder
+            .addCase(_updatePost.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(_updatePost.fulfilled, (state,action) => {
+                state.isLoading = true;
+                state.data = action.payload;
+            })
+            .addCase(_updatePost.rejected, (state,action) => {
+                state.isLoading = true;
+                state.error = action.payload;
+            })
+        builder
+            .addCase(onLikePost.pending, (state) => {
+              state.isLoading = true;
+            })
+            .addCase(onLikePost.fulfilled, (state, action) => {
+              state.isLoading = false;
+              state.detail = { ...state.detail, likes: state.detail.likes };
+              console.log(state.detail);
+            })
+            .addCase(onLikePost.rejected, (state, action) => {
+              state.isLoading = false;
+              state.error = action.payload;
+            });
+        builder
+            .addCase(_searchPost.pending, (state) => {
+              state.isLoading = true;
+            })
+            .addCase(_searchPost.fulfilled, (state, action) => {
+              state.isLoading = false;
+              state.search = action.payload;
+              console.log(state.detail);
+            })
+            .addCase(_searchPost.rejected, (state, action) => {
+              state.isLoading = false;
+              state.error = action.payload;
+            });
+    }
+})
+
+
+export const {likePost} = postSlice.actions;
+export default postSlice
+
+
