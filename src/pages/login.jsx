@@ -6,11 +6,17 @@ import x버튼 from "../img/x버튼.png";
 // import { useDispatch } from "react-redux";
 // import { login } from "../redux/modules/userSlice";
 import axios from "axios";
+import SignUp from "./SignUp";
 
-const Login = (props) => {
+const Login = ({open}) => {
   // const dispatch = useDispatch();
-  const { close1, open2 } = props;
-  console.log(props);
+  let [modalOpen, setModalOpen] = useState(false);
+  const signClose = () => {
+    setModalOpen(true);
+  };
+  const signOpen = () => {
+    setModalOpen(false);
+  };
 
   let navigate = useNavigate();
 
@@ -50,9 +56,14 @@ const Login = (props) => {
   };
 
   return (
+    <>
+    {modalOpen === true
+      ?<SignUp open={open}/>
+      :null
+    }
     <Wrapper>
       <XWrap>
-        <X src={x버튼} onClick={close1}></X>
+        <X src={x버튼} onClick={() =>open(false)}></X>
       </XWrap>
       <App src={로그인앱버튼}></App>
 
@@ -84,7 +95,7 @@ const Login = (props) => {
         </Inputbox>
 
         <Buttonstyle>
-          <button type="button" className="signupstyle" onClick={open2}>
+          <button  className="signupstyle">
             회원가입
           </button>
         </Buttonstyle>
@@ -108,6 +119,7 @@ const Login = (props) => {
         </HelpWrapper>
       </form>
     </Wrapper>
+    </>
   );
 };
 

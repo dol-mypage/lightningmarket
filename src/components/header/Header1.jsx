@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { _logout,logout } from "../../redux/modules/userSlice";
+import { useDispatch } from "react-redux";
 
 <Helmet>
   <script
@@ -16,6 +18,8 @@ import { Helmet } from "react-helmet-async";
 </Helmet>;
 
 const Header1 = (props) => {
+  
+  const dispatch = useDispatch();
   const {open1} = props; 
   let navigate = useNavigate();
   const user = localStorage.getItem("nickname");
@@ -27,16 +31,27 @@ const Header1 = (props) => {
     setModalOn(!modalOn);
   };
   //모달 창 디자인
+  const logoutHandler = () => {
+    dispatch(_logout())
+    localStorage.removeItem("Authorization")
+    localStorage.removeItem("RefreshToken")
+    localStorage.removeItem("nickname")
+    navigate('/')
+    console.log("작동")
+    alert('로그아웃이 완료되었습니다')
+  }
   const Modal = () => {
     return (
       <AllModal>
         <Modal1>
           <Bg />
           <ModalBox>
-            <h3>로그아웃</h3>
-            <p>로그아웃 하시겠습니까?</p>
+            <h3 style={{marginBottom:"35px"}} >로그아웃</h3>
+            <p style={{marginBottom:"10px"}}>로그아웃 하시겠습니까?</p>
+            <Button style={{display:"flex", marginLeft:"30px"}}>
             <CloseBtn onClick={onOpenModal}>취소</CloseBtn>
-            <OKbutton>확인</OKbutton>
+            <OKbutton onClick={logoutHandler}>확인</OKbutton>
+            </Button>
           </ModalBox>
         </Modal1>
       </AllModal>
@@ -167,7 +182,9 @@ const LoGin = styled.div`
 `;
 
 //모달
-const AllModal = styled.div``;
+const AllModal = styled.div`
+background-color:rgba(0, 0, 0, 0.6);
+`;
 
 const Modal1 = styled.div`
   position: fixed;
@@ -196,6 +213,7 @@ const ModalBox = styled.div`
   padding: 15px;
   justify-content: center;
   align-items: center;
+  text-align:center;
 `;
 
 const CloseBtn = styled.div`
@@ -205,6 +223,10 @@ const CloseBtn = styled.div`
   font-size: 18px;
   background-color: rgb(244, 244, 250);
   color: rgb(114, 112, 127);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 `;
 const OKbutton = styled.div`
   height: 50px;
@@ -214,4 +236,16 @@ const OKbutton = styled.div`
   color: rgb(255, 255, 255);
   background: rgb(255, 80, 88);
   font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 `;
+const Button =styled.div`
+  height: 35px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: center;
+  margin-top: 20px;
+  margin-right:30px;
+`
