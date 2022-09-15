@@ -16,14 +16,6 @@ import { Helmet } from "react-helmet-async";
 import Search from "./pages/Search";
 
 function App() {
-  // let [modalOpen, setModalOpen] = useState(false);
-  // const openModal = () => {
-  //   setModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setModalOpen(false);
-  // };
   return (
     <>
       <Helmet>

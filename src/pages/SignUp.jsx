@@ -2,25 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
-import { useDispatch } from "react-redux";
-import { signUp } from "../redux/modules/userSlice";
-import x버튼 from "../img/x버튼.png";
-import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
 function SignUp() {
-  // const dispatch = useDispatch();
   let navigate = useNavigate();
   const [input, setInput] = useState({
     nickname: "",
     password: "",
     passwordConfirm: "",
   });
-
-  // const onChangeHandler = (event) => {
-  //   const { name, value } = event.target;
-  //   setInput({ ...input, [name]: value });
-  // };
 
   const [nicknameError, setNicknameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -101,9 +91,6 @@ function SignUp() {
 
   return (
     <Wrapper>
-      <XWrap>
-        <X src={x버튼}></X>
-      </XWrap>
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
@@ -180,8 +167,8 @@ export default SignUp;
 
 let Wrapper = styled.div`
   font-family: "Noto Sans KR", sans-serif;
-  width: 400px;
-  height: 425px;
+  width: 450px;
+  height: 500px;
   border: none;
   background-color: #f7f7f7;
   margin: auto;
@@ -191,16 +178,8 @@ let Wrapper = styled.div`
   text-align: center;
   /* border: 1px solid red; */
   display: flex;
-`;
-
-const X = styled.img`
-  width: 20px;
-`;
-
-const XWrap = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: right;
+  margin-top: 100px;
+  margin-bottom: 100px;
 `;
 
 const Buttonstyle = styled.button`
@@ -245,10 +224,6 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
-<<<<<<< HEAD
-=======
-
->>>>>>> 08e57995a8b8f91ee8d06cd29eb22ac744fc1581
   .inputstyle {
     width: 250px;
     height: 25px;

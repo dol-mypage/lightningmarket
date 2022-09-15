@@ -50,11 +50,6 @@ function Main() {
           </div>
         </ItemContainer>
       </ItemInfos>
-      <div>
-        {/* {mo ? <Login></Login> : null} */}
-        {/*open이 true면 <Login>을 보여줘. open이 false면 아무것도 
-보여주지마. 삼항연산자로 적어줌.   */}
-      </div>
     </Section>
   );
 }
@@ -64,16 +59,16 @@ const H2 = styled.h2`
   margin-bottom: 24px;
 `;
 const Section = styled.section`
-  width: 1024px;
+  width: 1050px;
   margin: auto;
-  padding: 3.5rem 0px 1.5rem;
+  padding: 3rem 0px 1.5rem 30px;
 `;
 const ItemInfos = styled.div`
   position: relative;
   overflow: hidden;
 `;
 const ItemContainer = styled.div`
-  width: 1024px;
+  width: 1050px;
 `;
 
 const CardInner = styled.a`
@@ -86,14 +81,14 @@ const CardInner = styled.a`
 
 const CardHead = styled.div`
   position: relative;
-  width: 192px;
+  width: 194px;
   height: 194px;
   img {
     vertical-align: bottom;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 192px;
+    width: 194px;
     height: 194px;
   }
 `;
@@ -111,6 +106,7 @@ const ItemName = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 170px;
 `;
 
 const ItemContentBottom = styled.div`

@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import 로그인앱버튼 from "../img/로그인 앱버튼.png";
-import x버튼 from "../img/x버튼.png";
-// import { useDispatch } from "react-redux";
-// import { login } from "../redux/modules/userSlice";
 import axios from "axios";
+import 로그인앱버튼 from "../img/로그인 앱버튼.png";
 
-const Login = (props) => {
-  // const dispatch = useDispatch();
-  const { close } = props;
-  console.log(close);
+const Login = () => {
   let navigate = useNavigate();
 
   const [inputvalue, setInputvalue] = useState({
@@ -46,15 +40,15 @@ const Login = (props) => {
     console.log(inputvalue);
   };
 
+  //회원가입 클릭시 새로고침해서 로그인창 없애버리기
+  function refreshPage() {
+    window.location.reload();
+  }
+
   return (
-    <Wrapper>
-      <XWrap>
-        <X src={x버튼} onClick={close}></X>
-      </XWrap>
+    <>
       <App src={로그인앱버튼}></App>
-
       <Title>번개장터로 중고거래 시작하기</Title>
-
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
       <form onSubmit={onSubmitHandler}>
         <Inputbox>
@@ -86,20 +80,14 @@ const Login = (props) => {
             className="signupstyle"
             onClick={() => {
               navigate("/signup");
+              refreshPage();
             }}
           >
             회원가입
           </button>
         </Buttonstyle>
         <Buttonstyle>
-          <button
-            type="submit"
-            className="loginstyle"
-            // onClick={(e) => {
-            //   dispatch(login(data));
-            //   console.log("실행되나");
-            // }}
-          >
+          <button type="submit" className="loginstyle">
             로그인
           </button>
         </Buttonstyle>
@@ -110,45 +98,11 @@ const Login = (props) => {
           </Help>
         </HelpWrapper>
       </form>
-    </Wrapper>
+    </>
   );
 };
 
 export default Login;
-
-let Wrapper = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
-  width: 419.998px;
-  height: 465.886px;
-  border: none;
-  background-color: #f7f7f7;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  display: flex;
-  border: 1px solid red;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 99;
-`;
-
-const X = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-`;
-
-const XWrap = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: right;
-  margin-right: 20px;
-`;
 
 const Buttonstyle = styled.button`
   font-family: "Noto Sans KR", sans-serif;
@@ -202,10 +156,8 @@ const Inputbox = styled.div`
 `;
 
 const App = styled.img`
-  text-align: center;
-  margin: auto auto 10px;
-  width: 30px;
-  margin-top: 0px;
+  margin: 10px;
+  width: 10%;
 `;
 
 const Title = styled.div`

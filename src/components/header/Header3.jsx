@@ -64,7 +64,7 @@ export default Header3;
 
 const All = styled.div`
   position: fixed;
-  z-index: 50;
+  z-index: 30;
   width: 90px;
   display: block;
   color: rgb(33, 33, 33);
@@ -76,7 +76,7 @@ const All1 = styled.div`
   position: relative;
   top: -50px;
   right: -1480px;
-  z-index: 50;
+  z-index: 30;
 `;
 
 const BoxLike = styled.div`
