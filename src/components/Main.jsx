@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
-function Main() {
-
-  // console.log(props);
-  // const { mo } = props.props;
-  // console.log(mo);
+function Main(props) {
+  console.log(props);
+  const { mo1, mo2 } = props;
+  console.log(mo2);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,44 +23,44 @@ function Main() {
   console.log(products?.data?.data);
 
 
-  // 컴포넌트 리턴
   return (
-    <Section>
-      <H2>오늘의 상품 추천</H2>
-      <ItemInfos>
-        <ItemContainer>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
-            {products.map((product) => {
-              return (
-                <div
-                  onClick={() => {
-                    navigate(`/products/${product.id}`);
-                  }}
-                  key={product.id}
-                >
-                  <CardInner>
-                    <CardHead>
-                      <img src={product.imgUrl} />
-                      <Sth />
-                    </CardHead>
-                    <CardContents>
-                      <ItemName>{product.title}</ItemName>
-                      <ItemContentBottom>
-                        <Price>{product.price}</Price>
-                        <Time>2시간 전</Time>
-                      </ItemContentBottom>
-                    </CardContents>
-                  </CardInner>
-                </div>
-              );
-            })}
-          </div>
-        </ItemContainer>
-      </ItemInfos>
-      <div>
-        {/* {mo ? <Login></Login> : null} */}
-        {/*open이 true면 <Login>을 보여줘. open이 false면 아무것도 
-
+    <div>
+      <Section>
+        <H2>오늘의 상품 추천</H2>
+        <ItemInfos>
+          <ItemContainer>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {products.map((product) => {
+                return (
+                  <div
+                    onClick={() => {
+                      navigate(`/products/${product.id}`);
+                    }}
+                    key={product.id}
+                  >
+                    <CardInner>
+                      <CardHead>
+                        <img src={product.imgUrl} />
+                        <Sth />
+                      </CardHead>
+                      <CardContents>
+                        <ItemName>{product.title}</ItemName>
+                        <ItemContentBottom>
+                          <Price>{product.price}</Price>
+                          <Time>2시간 전</Time>
+                        </ItemContentBottom>
+                      </CardContents>
+                    </CardInner>
+                  </div>
+                );
+              })}
+            </div>
+          </ItemContainer>
+        </ItemInfos>
+        <div>
+          {mo1 ? <Login></Login> : null}
+          {mo2 ? <SignUp></SignUp> : null}
+          {/* mo1이 true면 <Login>을 보여줘. open이 false면 아무것도 
 보여주지마. 삼항연산자로 적어줌.   */}
       </div>
     </Section>
@@ -74,7 +75,32 @@ const Section = styled.section`
   width: 1024px;
   margin: auto;
   padding: 3.5rem 0px 1.5rem;
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal.openModal {
+    display: flex;
+    align-items: center;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-bg-show 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
 `;
+
 const ItemInfos = styled.div`
   position: relative;
   overflow: hidden;

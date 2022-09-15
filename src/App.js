@@ -13,28 +13,45 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+
 import Search from "./pages/Search";
 
 function App() {
-  // let [modalOpen, setModalOpen] = useState(false);
-  // const openModal = () => {
-  //   setModalOpen(true);
-  // };
 
-  // const closeModal = () => {
-  //   setModalOpen(false);
-  // };
+  // 로그인 모달
+  let [modal1, setModal1] = useState(false);
+  const openModal1 = () => {
+    setModal1(true);
+  };
+  const closeModal1 = () => {
+    setModal1(false);
+  };
+  //회원가입 모달
+  let [modal2, setModal2] = useState(false);
+  const openModal2 = () => {
+    setModal2(true);
+  };
+  const closeModal2 = () => {
+    setModal2(false);
+  };
+
   return (
     <>
       <Helmet>
         <title>번개장터</title>
       </Helmet>
-      <Header1 />
-      <Header2 />
+      <Header1 open1={openModal1} />
+      <Header2 open1={openModal1} />
       <Header3 />
+      {modal1 && <Login close1={closeModal1} />}
+      {modal2 && <Login open2={openModal2} />}
+      {modal1 && <Home mo1={modal1} />}
+      {modal2 && <Home mo2={modal2} />}
+      {modal1 && <MyShop mo1={modal1} />}
+      {modal2 && <SignUp close2={closeModal2} />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/myshop" element={<MyShop />} />
         <Route path="/products/new" element={<AddForm />} />
