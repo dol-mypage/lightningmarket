@@ -6,6 +6,8 @@ import myshop from "../img/myshop.png";
 import tabs from "../img/tabs.png";
 
 const MyProfile = () => {
+  const user = localStorage.getItem("nickname");
+
   return (
     <>
       <All>
@@ -23,7 +25,7 @@ const MyProfile = () => {
                 class="sc-fATqzn hyPlln"
               />
             </ImgG11>
-            <ImgBtt>닉네임</ImgBtt>
+            <ImgBtt>{user}</ImgBtt>
             <img src={별이다섯개} />
             <ImgBtt1>
               <button>내상점 관리</button>
@@ -32,7 +34,7 @@ const MyProfile = () => {
         </All1>
         <TextWindow>
           <Nickname>
-            닉네임여기다가넣기
+            {user}
             <NicknameBtt>상점명수정</NicknameBtt>
           </Nickname>
           <NicknameImg>
@@ -64,7 +66,6 @@ const All = styled.div`
   width: 1024px;
   margin: auto;
   display: flex;
-  width: 1024px;
   margin-bottom: 30px;
   border: 1px solid rgb(238, 238, 238);
   height: 310px;
