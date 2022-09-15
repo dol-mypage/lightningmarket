@@ -13,12 +13,7 @@ export const __getProduct = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       console.log(payload);
-      const data = await axios.get("http://13.125.225.96:8080/products", {
-        // headers: {
-        //   Authorization: localStorage.getItem("Authorization"),
-        //   RefreshToken: localStorage.getItem("RefreshToken"),
-        // },
-      });
+      const data = await axios.get("http://13.125.225.96:8080/products", {});
       console.log(data.data.data);
       return thunkAPI.fulfillWithValue(data.data.data);
     } catch (error) {
