@@ -18,22 +18,6 @@ import Search from "./pages/Search";
 
 function App() {
 
-  // 로그인 모달
-  let [modal1, setModal1] = useState(false);
-  const openModal1 = () => {
-    setModal1(true);
-  };
-  const closeModal1 = () => {
-    setModal1(false);
-  };
-  //회원가입 모달
-  let [modal2, setModal2] = useState(false);
-  const openModal2 = () => {
-    setModal2(true);
-  };
-  const closeModal2 = () => {
-    setModal2(false);
-  };
 
   return (
     <>
