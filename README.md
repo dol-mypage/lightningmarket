@@ -13,21 +13,11 @@
 
 3. 기술 스택
 📌 BackEnd
-
+https://camo.githubusercontent.com/fe32ad2ab38a49980ae074cb13dee4b325e1c067f5b33998af9d42b72bb6e47b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6176612d3030373339363f7374796c653d666c6174266c6f676f3d4a617661266c6f676f436f6c6f723d7768697465
 
  
  
   
 
 4. API 명세서
-Screen Shot 2022-09-15 at 1 15 10 PM
 
-Screen Shot 2022-09-15 at 1 15 28 PM
-
-Screen Shot 2022-09-15 at 1 16 02 PM
-
-Screen Shot 2022-09-15 at 1 16 21 PM
-
-Screen Shot 2022-09-15 at 1 18 51 PM
-
-Screen Shot 2022-09-15 at 1 19 07 PM
