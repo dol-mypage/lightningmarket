@@ -62,6 +62,27 @@ export const signup = createAsyncThunk(
   }
 );
 
+export const _logout = createAsyncThunk(
+  "users/logout",
+  async (payload, thunkAPI) => {
+      try{
+
+          const data = await axios.post("http://13.125.225.96:8080/logout",payload,{
+
+              headers:{
+                Authorization: localStorage.getItem("Authorization"),
+                RefreshToken: localStorage.getItem("RefreshToken"),
+              }
+          })
+          localStorage.removeItem("Authorization")
+          localStorage.removeItem("RefreshToken")
+          localStorage.removeItem("nickname")
+          return thunkAPI.fulfillWithValue(data.data)
+      }catch(error){
+          return thunkAPI.rejectWithValue(error);
+      }
+  }
+)
 // export const login = createAsyncThunk(
 //   "userSlice/login",
 //   async (data, { rejectWithValue }) => {
@@ -77,6 +98,15 @@ export const signup = createAsyncThunk(
 export const userSlice = createSlice({
   name: "userSlice",
   initialState,
-  reducers: {},
+  reducers: { logout(state,action) {
+    localStorage.removeItem("Authorization")
+    localStorage.removeItem("RefreshToken")
+    localStorage.removeItem("nickname")
+    localStorage.clear()
+    console.log("작동")
+}},
   extraReducers: {},
 });
+
+export const {logout} = userSlice.actions;
+export default userSlice

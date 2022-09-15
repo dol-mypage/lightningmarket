@@ -38,7 +38,7 @@ const Login = () => {
         localStorage.setItem("RefreshToken", data.headers.refreshtoken); //refreshtoken
         localStorage.setItem("nickname", data.data.data.nickname);
         console.log(data);
-        navigate("/");
+        window.location.replace('/')
       }
     } catch (error) {}
     console.log(inputvalue);

@@ -24,15 +24,9 @@ function App() {
       <Helmet>
         <title>번개장터</title>
       </Helmet>
-      <Header1 open1={openModal1} />
-      <Header2 open1={openModal1} />
+      <Header1 />
+      <Header2 />
       <Header3 />
-      {modal1 && <Login close1={closeModal1} />}
-      {modal2 && <Login open2={openModal2} />}
-      {modal1 && <Home mo1={modal1} />}
-      {modal2 && <Home mo2={modal2} />}
-      {modal1 && <MyShop mo1={modal1} />}
-      {modal2 && <SignUp close2={closeModal2} />}
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/login" element={<Login />} /> */}
