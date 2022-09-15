@@ -88,6 +88,7 @@ export const onLikePost = createAsyncThunk(
           },
         } //post는 두번째 인자가 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
       );
+      window.location.reload()
       return payload;
     } catch (error) {
       return thunkApI.rejectWithValue(error);
