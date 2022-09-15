@@ -4,7 +4,9 @@ import styled from "styled-components";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
 import axios from "axios";
 
+
 function SignUp() {
+
   let navigate = useNavigate();
   const [input, setInput] = useState({
     nickname: "",
@@ -91,6 +93,8 @@ function SignUp() {
 
   return (
     <Wrapper>
+
+
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
       <Body>간편하게 가입하고 상품을 확인하세요</Body>
@@ -167,8 +171,10 @@ export default SignUp;
 
 let Wrapper = styled.div`
   font-family: "Noto Sans KR", sans-serif;
+
   width: 450px;
   height: 500px;
+
   border: none;
   background-color: #f7f7f7;
   margin: auto;
@@ -176,7 +182,6 @@ let Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  /* border: 1px solid red; */
   display: flex;
   margin-top: 100px;
   margin-bottom: 100px;

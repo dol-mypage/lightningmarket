@@ -3,8 +3,14 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
-function Main() {
+function Main(props) {
+  console.log(props);
+  const { mo1, mo2 } = props;
+  console.log(mo2);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
@@ -16,8 +22,9 @@ function Main() {
   }, [dispatch]);
   console.log(products?.data?.data);
 
-  // 컴포넌트 리턴
+
   return (
+
     <Section>
       <H2>오늘의 상품 추천</H2>
       <ItemInfos>
@@ -50,6 +57,7 @@ function Main() {
           </div>
         </ItemContainer>
       </ItemInfos>
+
     </Section>
   );
 }
@@ -62,7 +70,9 @@ const Section = styled.section`
   width: 1050px;
   margin: auto;
   padding: 3rem 0px 1.5rem 30px;
+
 `;
+
 const ItemInfos = styled.div`
   position: relative;
   overflow: hidden;

@@ -4,7 +4,9 @@ import styled from "styled-components";
 import axios from "axios";
 import 로그인앱버튼 from "../img/로그인 앱버튼.png";
 
+
 const Login = () => {
+
   let navigate = useNavigate();
 
   const [inputvalue, setInputvalue] = useState({
@@ -29,14 +31,16 @@ const Login = () => {
         "http://13.125.225.96:8080/login",
         inputvalue
       );
-      localStorage.setItem("Authorization", data.headers.authorization); //accesstoken
-      localStorage.setItem("RefreshToken", data.headers.refreshtoken); //refreshtoken
-      localStorage.setItem("nickname", data.data.data.nickname);
-      console.log(data);
-      navigate("/");
-    } catch (error) {
-      alert("아이디와 비밀번호를 다시 확인해주세요.");
-    }
+      if (data.data.success === false) {
+        alert("아이디와 비밀번호를 다시 확인해주세요.");
+      } else {
+        localStorage.setItem("Authorization", data.headers.authorization); //accesstoken
+        localStorage.setItem("RefreshToken", data.headers.refreshtoken); //refreshtoken
+        localStorage.setItem("nickname", data.data.data.nickname);
+        console.log(data);
+        navigate("/");
+      }
+    } catch (error) {}
     console.log(inputvalue);
   };
 
@@ -46,6 +50,7 @@ const Login = () => {
   }
 
   return (
+
     <>
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
@@ -75,6 +80,7 @@ const Login = () => {
         </Inputbox>
 
         <Buttonstyle>
+
           <button
             type="submit"
             className="signupstyle"
@@ -83,6 +89,7 @@ const Login = () => {
               refreshPage();
             }}
           >
+
             회원가입
           </button>
         </Buttonstyle>
@@ -103,6 +110,8 @@ const Login = () => {
 };
 
 export default Login;
+
+
 
 const Buttonstyle = styled.button`
   font-family: "Noto Sans KR", sans-serif;

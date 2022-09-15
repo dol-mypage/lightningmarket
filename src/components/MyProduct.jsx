@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import Login from "../pages/Login";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
 
-const MyProduct = () => {
+const MyProduct = (props) => {
+  const { mo1 } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
@@ -63,6 +65,7 @@ const MyProduct = () => {
                       </CardBot>
                     </div>
                   </CardInner>
+                  {mo1 == true ? <Login></Login> : null}
                 </Card>
               </div>
             );

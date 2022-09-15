@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Login from "../../pages/Login";
 import x버튼 from "../../img/x버튼.png";
 
-const Header1 = () => {
+const Header1 = (props) => {
+  const {open1} = props; 
   let navigate = useNavigate();
   const user = localStorage.getItem("nickname");
 
@@ -259,3 +260,4 @@ const XWrap = styled.div`
   justify-content: right;
   margin-right: 20px;
 `;
+
