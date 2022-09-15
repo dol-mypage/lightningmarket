@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const Header3 = () => {
+  useEffect(() => {
+    // 탑 누르면 맨 위로
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
   return (
     <>
       <All>
@@ -42,7 +46,13 @@ const Header3 = () => {
             </QRBox>
           </App>
           <Top>
-            <h4>TOP</h4>
+            <h4
+              onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              }}
+            >
+              TOP
+            </h4>
           </Top>
         </All1>
       </All>
@@ -54,7 +64,7 @@ export default Header3;
 
 const All = styled.div`
   position: fixed;
-  z-index: 100;
+  z-index: 50;
   width: 90px;
   display: block;
   color: rgb(33, 33, 33);
@@ -66,7 +76,7 @@ const All1 = styled.div`
   position: relative;
   top: -50px;
   right: -1480px;
-  z-index: 100;
+  z-index: 50;
 `;
 
 const BoxLike = styled.div`
