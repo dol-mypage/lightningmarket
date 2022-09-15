@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MyProduct from "../components/MyProduct";
 import MyProfile from "../components/MyProfile";
 
-const MyShop = () => {
+const MyShop = (props) => {
   return (
     <div>
       <Section>

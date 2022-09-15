@@ -8,8 +8,10 @@ import x버튼 from "../img/x버튼.png";
 import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
-function SignUp() {
+function SignUp(props) {
   // const dispatch = useDispatch();
+  const { close2 } = props;
+  console.log(close2);
   let navigate = useNavigate();
   const [input, setInput] = useState({
     nickname: "",
@@ -102,7 +104,7 @@ function SignUp() {
   return (
     <Wrapper>
       <XWrap>
-        <X src={x버튼}></X>
+        <X src={x버튼} onClick={close2}></X>
       </XWrap>
       <App src={로그인앱버튼}></App>
       <Title>번개장터로 중고거래 시작하기</Title>
@@ -180,8 +182,8 @@ export default SignUp;
 
 let Wrapper = styled.div`
   font-family: "Noto Sans KR", sans-serif;
-  width: 400px;
-  height: 425px;
+  width: 419.998px;
+  height: 465.886px;
   border: none;
   background-color: #f7f7f7;
   margin: auto;
@@ -189,8 +191,13 @@ let Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  /* border: 1px solid red; */
   display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
 `;
 
 const X = styled.img`
@@ -245,7 +252,6 @@ const Inputbox = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px auto;
-
   .inputstyle {
     width: 250px;
     height: 25px;

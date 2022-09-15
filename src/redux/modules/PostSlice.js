@@ -5,6 +5,7 @@ import axios from "axios";
 const initialState = {
     post: [],
     detail:{},
+    search:[],
     isLoading: false,
     error: null,
 }
@@ -86,6 +87,26 @@ export const onLikePost = createAsyncThunk(
       }
     }
   );
+export const _searchPost = createAsyncThunk(
+    "postSlice/searchPost",
+    async (payload, thunkAPI) => {
+        console.log(payload)
+        try{
+            const data = await axios.get(
+                `http://13.125.225.96:8080/products/search/${payload}`,
+            {
+                headers:{}
+            }
+            )
+            console.log(data)
+            window.location.replace(`/products/search/${payload}`)
+        return thunkAPI.fulfillWithValue(data.data.data)
+        }catch(error){
+        return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
 export const postSlice = createSlice({
     name:"post",
     initialState,
@@ -139,6 +160,19 @@ extraReducers:(builder) => {
               console.log(state.detail);
             })
             .addCase(onLikePost.rejected, (state, action) => {
+              state.isLoading = false;
+              state.error = action.payload;
+            });
+        builder
+            .addCase(_searchPost.pending, (state) => {
+              state.isLoading = true;
+            })
+            .addCase(_searchPost.fulfilled, (state, action) => {
+              state.isLoading = false;
+              state.search = action.payload;
+              console.log(state.detail);
+            })
+            .addCase(_searchPost.rejected, (state, action) => {
               state.isLoading = false;
               state.error = action.payload;
             });

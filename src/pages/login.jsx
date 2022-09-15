@@ -9,8 +9,9 @@ import axios from "axios";
 
 const Login = (props) => {
   // const dispatch = useDispatch();
-  const { close } = props;
-  console.log(close);
+  const { close1, open2 } = props;
+  console.log(props);
+
   let navigate = useNavigate();
 
   const [inputvalue, setInputvalue] = useState({
@@ -35,21 +36,23 @@ const Login = (props) => {
         "http://13.125.225.96:8080/login",
         inputvalue
       );
-      localStorage.setItem("Authorization", data.headers.authorization); //accesstoken
-      localStorage.setItem("RefreshToken", data.headers.refreshtoken); //refreshtoken
-      localStorage.setItem("nickname", data.data.data.nickname);
-      console.log(data);
-      navigate("/");
-    } catch (error) {
-      alert("아이디와 비밀번호를 다시 확인해주세요.");
-    }
+      if (data.data.success === false) {
+        alert("아이디와 비밀번호를 다시 확인해주세요.");
+      } else {
+        localStorage.setItem("Authorization", data.headers.authorization); //accesstoken
+        localStorage.setItem("RefreshToken", data.headers.refreshtoken); //refreshtoken
+        localStorage.setItem("nickname", data.data.data.nickname);
+        console.log(data);
+        navigate("/");
+      }
+    } catch (error) {}
     console.log(inputvalue);
   };
 
   return (
     <Wrapper>
       <XWrap>
-        <X src={x버튼} onClick={close}></X>
+        <X src={x버튼} onClick={close1}></X>
       </XWrap>
       <App src={로그인앱버튼}></App>
 
@@ -81,13 +84,7 @@ const Login = (props) => {
         </Inputbox>
 
         <Buttonstyle>
-          <button
-            type="submit"
-            className="signupstyle"
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
+          <button type="button" className="signupstyle" onClick={open2}>
             회원가입
           </button>
         </Buttonstyle>
@@ -128,7 +125,6 @@ let Wrapper = styled.div`
   flex-direction: column;
   text-align: center;
   display: flex;
-  border: 1px solid red;
   position: fixed;
   top: 0;
   right: 0;
@@ -200,7 +196,6 @@ const Inputbox = styled.div`
     font-family: "Noto Sans KR", sans-serif;
   }
 `;
-
 
 const App = styled.img`
   text-align: center;

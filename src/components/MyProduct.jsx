@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
-const MyProduct = () => {
+import Login from "../pages/Login";
+const MyProduct = (props) => {
+  const { mo1 } = props;
   return (
     <>
       <Card>
@@ -26,6 +27,7 @@ const MyProduct = () => {
             전국
           </CardBot>
         </CardInner>
+        {mo1 == true ? <Login></Login> : null}
       </Card>
     </>
   );

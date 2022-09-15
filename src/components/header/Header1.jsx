@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const Header1 = (props) => {
-  const { open } = props;
-  console.log(open);
+  const { open1 } = props;
+  console.log(props);
   let navigate = useNavigate();
 
   const user = localStorage.getItem("nickname");
@@ -38,8 +37,11 @@ const Header1 = (props) => {
 
         {user == null ? (
           <LoGin>
-            <Butt onClick={open}>로그인/회원가입</Butt>
-            <Butt onClick={open}>내상점</Butt>
+            <Butt onClick={open1}>
+              {/* 로그인/회원가입 버튼을 클릭했을 때 로그인 모달을 연다. */}
+              로그인/회원가입
+            </Butt>
+            <Butt onClick={open1}>내상점</Butt>
           </LoGin>
         ) : (
           <LoGin>

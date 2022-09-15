@@ -57,7 +57,6 @@ const Form = () => {
   };
 
   //value를 setState해준다
-
   const onChangeHandler = (event, setState) => setState(event.target.value);
 
   const onAddPost = async (e) => {
@@ -65,7 +64,6 @@ const Form = () => {
     console.log(json);
     const blob = new Blob([json], { type: "application/json" });
     const formData = new FormData();
-
     formData.append("data", blob);
     // for(let i=0; i<imgUrl.length; i++){
     //   formData.append("imgUrl",imgUrl[i])
