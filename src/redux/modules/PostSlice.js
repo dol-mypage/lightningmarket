@@ -185,10 +185,6 @@ extraReducers:(builder) => {
 })
 
 
-<<<<<<< HEAD
 export const {likePost} = postSlice.actions;
 export default postSlice
-=======
-export const {} = postSlice.actions;
-export default postSlice
->>>>>>> 9e0e645fcc424c124c9c9b2f5a46832b7b4b6f29
+

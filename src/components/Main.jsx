@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getProduct } from "../redux/modules/products";
 import Login from "../pages/Login";
 
-function Main(props) {
-  console.log(props);
-  const { mo } = props.props;
-  console.log(mo);
+function Main() {
+  // console.log(props);
+  // const { mo } = props.props;
+  // console.log(mo);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.data);
@@ -23,7 +23,8 @@ function Main(props) {
   // 컴포넌트 리턴
 
 
-
+    return(
+      <div>
       <Section>
         <H2>오늘의 상품 추천</H2>
         <ItemInfos>
@@ -57,7 +58,7 @@ function Main(props) {
           </ItemContainer>
         </ItemInfos>
         <div>
-          {mo ? <Login></Login> : null}
+          {/* {mo ? <Login></Login> : null} */}
           {/*open이 true면 <Login>을 보여줘. open이 false면 아무것도 
 보여주지마. 삼항연산자로 적어줌.   */}
         </div>

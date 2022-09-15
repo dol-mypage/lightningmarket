@@ -10,14 +10,10 @@ const Header2 = () => {
   const products = useSelector((state) => state.product.data);
   const [searchWord, setSearchWord] = useState("");
   const [search, setSearch] = useState("");
-<<<<<<< HEAD
- 
   
-=======
-
   const user = localStorage.getItem("nickname");
 
->>>>>>> 9e0e645fcc424c124c9c9b2f5a46832b7b4b6f29
+
   return (
     <MainHeader>
       <MainHeaderContainer>
